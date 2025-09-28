@@ -19,10 +19,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 0%;
     
-    /* Primary accent - Purple-blue */
-    --primary: 246 80% 60%;
+    /* Primary accent - Blue */
+    --primary: 207 94% 47%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 246 85% 55%;
+    --primary-hover: 207 94% 42%;
     
     /* Secondary - Light backgrounds */
     --secondary: 248 47% 97%;
@@ -43,12 +43,12 @@
     /* Borders and inputs */
     --border: 0 0% 89%;
     --input: 0 0% 89%;
-    --ring: 246 80% 60%;
+    --ring: 207 94% 47%;
     
     /* Gradient colors */
-    --gradient-start: 248 47% 97%;
-    --gradient-end: 224 47% 94%;
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(246 70% 70%));
+    --gradient-start: 207 94% 95%;
+    --gradient-end: 207 94% 90%;
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(207 94% 60%));
     --gradient-subtle: linear-gradient(180deg, hsl(var(--background)), hsl(var(--gradient-end)));
     --gradient-hero: linear-gradient(135deg, hsl(var(--background)), hsl(var(--gradient-end)));
     
@@ -85,12 +85,12 @@
     /* Sidebar */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 20%;
-    --sidebar-primary: 246 80% 60%;
+    --sidebar-primary: 207 94% 47%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 248 47% 97%;
+    --sidebar-accent: 207 94% 95%;
     --sidebar-accent-foreground: 0 0% 0%;
     --sidebar-border: 0 0% 89%;
-    --sidebar-ring: 246 80% 60%;
+    --sidebar-ring: 207 94% 47%;
   }
 
   .dark {
@@ -104,8 +104,8 @@
     --popover: 0 0% 3%;
     --popover-foreground: 0 0% 98%;
     
-    --primary: 246 80% 60%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 207 94% 47%;
+    --primary-foreground: 0 0% 100%;
     
     --secondary: 0 0% 14%;
     --secondary-foreground: 0 0% 98%;
