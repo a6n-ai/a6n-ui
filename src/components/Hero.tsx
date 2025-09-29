@@ -62,8 +62,14 @@ const Hero = () => {
             {/* Subheading with rotating text */}
             <p className="text-xl md:text-2xl text-foreground/90 max-w-3xl mx-auto animate-fade-in opacity-0 stagger-3">
               At a6n, we supercharge your team with private AI agents built for{" "}
-              <span className="inline-block min-w-[200px] text-left">
-                <span className="font-semibold text-primary animate-fade-in">
+              <span className="inline-block min-w-[200px] text-left align-bottom">
+                <span 
+                  key={currentTextIndex}
+                  className="font-semibold text-primary inline-block animate-[fade-in_0.5s_ease-out,spin-in_0.5s_ease-out] origin-center"
+                  style={{
+                    animation: 'fadeRotateIn 0.6s ease-out forwards'
+                  }}
+                >
                   {rotatingTexts[currentTextIndex]}
                 </span>
               </span>
