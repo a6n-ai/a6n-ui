@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Github, Linkedin } from "lucide-react";
+import logo from "@/assets/logo.svg";
 
 const Footer = () => {
   const footerLinks = [
@@ -19,8 +20,20 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Left - Logo and Tagline */}
             <div className="space-y-3">
-              <Link to="/" className="inline-block">
-                <span className="text-xl font-bold text-foreground">a6n</span>
+              <Link to="/" className="inline-flex items-center gap-2 group">
+                <div className="relative w-8 h-8 overflow-hidden rounded-lg">
+                  <img 
+                    src={logo} 
+                    alt="a6n logo" 
+                    className="w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
+                    style={{
+                      filter: 'drop-shadow(0 0 0.5px currentColor) drop-shadow(0 0 0.5px currentColor) contrast(1.3)',
+                    }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-primary opacity-0 group-hover:opacity-30 transition-opacity duration-500 mix-blend-overlay" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-subtle mix-blend-overlay" />
+                </div>
+                <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">a6n</span>
               </Link>
               <p className="text-sm text-muted-foreground">
                 Work smarter with your AI crew.
