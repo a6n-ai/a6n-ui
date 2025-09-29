@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.svg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,8 +37,17 @@ const Header = () => {
       <div className="container-width">
         <div className="flex items-center justify-between h-16 px-6 md:px-10">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-foreground">a6n</span>
+          <Link to="/" className="flex items-center group">
+            <div className="relative w-10 h-10 overflow-hidden rounded-lg">
+              <img 
+                src={logo} 
+                alt="a6n logo" 
+                className="w-full h-full object-contain transition-all duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-primary opacity-0 group-hover:opacity-20 transition-opacity duration-500 mix-blend-overlay" />
+              <div className="absolute inset-0 bg-gradient-to-br from-transparent via-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse-subtle mix-blend-overlay" />
+            </div>
+            <span className="ml-3 text-2xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">a6n</span>
           </Link>
 
           {/* Desktop Navigation */}
