@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import AIUseCases from "@/components/AIUseCases";
 import Benefits from "@/components/Benefits";
 import HowWeWork from "@/components/HowWeWork";
 import Vision from "@/components/Vision";
@@ -12,6 +13,7 @@ const Home = () => {
     <main className="pt-16">
       <Hero />
       <Features />
+      <AIUseCases />
       <Benefits />
       <HowWeWork />
       <Vision />
