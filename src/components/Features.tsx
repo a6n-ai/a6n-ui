@@ -45,50 +45,50 @@ const Features = () => {
     {
       icon: Server,
       illustration: featureServer,
-      title: "Private On-Premise Integration",
-      description: "Deploy AI agents securely within your infrastructure, maintaining complete data sovereignty and control.",
+      title: ["Private On-Premise", "Integration"],
+      description: "Deploy AI agents within your infrastructure with complete data control.",
     },
     {
       icon: Shield,
       illustration: featureOAuth,
-      title: "Secure OAuth Integration",
-      description: "Connect seamlessly with your provider or choose from available providers with enterprise-grade security.",
+      title: ["Secure OAuth", "Integration"],
+      description: "Connect with your provider or available providers securely.",
     },
     {
       icon: Lock,
       illustration: featureRBAC,
-      title: "RBAC Policies",
-      description: "Granular role-based access control ensures the right people have the right permissions at all times.",
+      title: ["RBAC", "Policies"],
+      description: "Role-based access control with granular permissions.",
     },
     {
       icon: Sparkles,
       illustration: featureModels,
-      title: "Best Models to Choose From",
-      description: "Access cutting-edge AI models from leading providers, optimized for your specific use cases.",
+      title: ["Best AI Models", "to Choose From"],
+      description: "Access cutting-edge models optimized for your use cases.",
     },
     {
       icon: Code,
       illustration: featureAPI,
-      title: "RESTful APIs",
-      description: "Instant ready-to-use APIs for seamless integration with your existing tools and workflows.",
+      title: ["RESTful", "APIs"],
+      description: "Ready-to-use APIs for seamless integration.",
     },
     {
       icon: Mic,
       illustration: featureVoice,
-      title: "Voice and Chat Features",
-      description: "Built-in voice and chat capabilities for natural, multi-modal interactions with your AI agents.",
+      title: ["Voice and Chat", "Features"],
+      description: "Multi-modal interactions with your AI agents.",
     },
     {
       icon: Github,
       illustration: featureOpenSource,
-      title: "Open Source Tools",
-      description: "Built on trusted open source technologies, giving you transparency and flexibility.",
+      title: ["Open Source", "Tools"],
+      description: "Built on trusted technologies for transparency.",
     },
     {
       icon: Cloud,
       illustration: featureCloud,
-      title: "Works on Any Cloud",
-      description: "Deploy on AWS, Azure, GCP, or your preferred cloud provider without vendor lock-in.",
+      title: ["Works on", "Any Cloud"],
+      description: "Deploy on AWS, Azure, GCP without vendor lock-in.",
     },
   ];
 
@@ -110,7 +110,7 @@ const Features = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
             {features.map((feature, index) => (
               <div
-                key={feature.title}
+                key={index}
                 ref={el => cardRefs.current[index] = el}
                 className="group"
               >
@@ -135,7 +135,7 @@ const Features = () => {
                         <div className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 p-4">
                           <img 
                             src={feature.illustration}
-                            alt={`${feature.title} illustration`}
+                            alt={`${Array.isArray(feature.title) ? feature.title.join(' ') : feature.title} illustration`}
                             className="w-full h-full object-contain opacity-90 group-hover:scale-110 transition-transform duration-700 ease-out"
                           />
                           {/* Subtle glow effect on hover */}
@@ -149,11 +149,12 @@ const Features = () => {
                       </div>
                       
                       {/* Content */}
-                      <div className="flex-1 space-y-3">
+                      <div className="flex-1 space-y-2">
                         <h3 className="text-base md:text-lg lg:text-xl font-semibold text-foreground leading-tight group-hover:text-primary transition-colors duration-300">
-                          {feature.title}
+                          <span className="block">{(feature.title as string[])[0]}</span>
+                          <span className="block">{(feature.title as string[])[1]}</span>
                         </h3>
-                        <p className="text-sm md:text-sm lg:text-base text-muted-foreground leading-relaxed">
+                        <p className="text-xs md:text-sm lg:text-sm text-muted-foreground leading-relaxed pt-1">
                           {feature.description}
                         </p>
                       </div>
