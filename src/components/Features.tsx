@@ -2,106 +2,165 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Server, Shield, Lock, Sparkles, Code, Mic, Github, Cloud } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
+// Import feature illustrations
+import featureServer from "@/assets/feature-server.png";
+import featureOAuth from "@/assets/feature-oauth.png";
+import featureRBAC from "@/assets/feature-rbac.png";
+import featureModels from "@/assets/feature-models.png";
+import featureAPI from "@/assets/feature-api.png";
+import featureVoice from "@/assets/feature-voice.png";
+import featureOpenSource from "@/assets/feature-opensource.png";
+import featureCloud from "@/assets/feature-cloud.png";
+
 const Features = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
+    const observers: IntersectionObserver[] = [];
+    
+    cardRefs.current.forEach((ref, index) => {
+      if (ref) {
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setVisibleCards(prev => new Set(prev).add(index));
+              observer.unobserve(ref);
+            }
+          },
+          { threshold: 0.1, rootMargin: "50px" }
+        );
+        
+        observer.observe(ref);
+        observers.push(observer);
+      }
+    });
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
+    return () => {
+      observers.forEach(observer => observer.disconnect());
+    };
   }, []);
 
   const features = [
     {
       icon: Server,
+      illustration: featureServer,
       title: "Private On-Premise Integration",
       description: "Deploy AI agents securely within your infrastructure, maintaining complete data sovereignty and control.",
     },
     {
       icon: Shield,
+      illustration: featureOAuth,
       title: "Secure OAuth Integration",
       description: "Connect seamlessly with your provider or choose from available providers with enterprise-grade security.",
     },
     {
       icon: Lock,
+      illustration: featureRBAC,
       title: "RBAC Policies",
       description: "Granular role-based access control ensures the right people have the right permissions at all times.",
     },
     {
       icon: Sparkles,
+      illustration: featureModels,
       title: "Best Models to Choose From",
       description: "Access cutting-edge AI models from leading providers, optimized for your specific use cases.",
     },
     {
       icon: Code,
+      illustration: featureAPI,
       title: "RESTful APIs",
       description: "Instant ready-to-use APIs for seamless integration with your existing tools and workflows.",
     },
     {
       icon: Mic,
+      illustration: featureVoice,
       title: "Voice and Chat Features",
       description: "Built-in voice and chat capabilities for natural, multi-modal interactions with your AI agents.",
     },
     {
       icon: Github,
+      illustration: featureOpenSource,
       title: "Open Source Tools",
       description: "Built on trusted open source technologies, giving you transparency and flexibility.",
     },
     {
       icon: Cloud,
+      illustration: featureCloud,
       title: "Works on Any Cloud",
       description: "Deploy on AWS, Azure, GCP, or your preferred cloud provider without vendor lock-in.",
     },
   ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-background/50">
+    <section className="py-20 md:py-24 lg:py-32 bg-gradient-to-b from-background to-background/50">
       <div className="container-width">
-        <div className="px-6 md:px-10">
-          <div className="text-center mb-16 space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+        <div className="px-4 md:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-16 lg:mb-20 space-y-4">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
               Enterprise-Grade Features
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base md:text-lg lg:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               Use one or all. Best of breed products. Integrated as a platform.
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
             {features.map((feature, index) => (
-              <Card
+              <div
                 key={feature.title}
-                className={`notion-card border bg-card/50 backdrop-blur-sm shadow-sm hover:shadow-md hover:scale-105 transition-all duration-300 ${
-                  isVisible ? "animate-fade-in-up opacity-0" : ""
-                }`}
-                style={{ animationDelay: `${index * 0.1}s` }}
+                ref={el => cardRefs.current[index] = el}
+                className="group"
               >
-                <CardContent className="p-6">
-                  <div className="space-y-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <feature.icon className="h-6 w-6 text-primary" />
+                <Card
+                  className={`
+                    h-full border border-border/50 bg-card/30 backdrop-blur-sm 
+                    hover:bg-card/50 hover:border-border hover:shadow-lg
+                    transition-all duration-500 ease-out
+                    ${visibleCards.has(index) 
+                      ? 'opacity-100 translate-y-0' 
+                      : 'opacity-0 translate-y-8'
+                    }
+                  `}
+                  style={{ 
+                    transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : '0ms'
+                  }}
+                >
+                  <CardContent className="p-5 md:p-6 lg:p-7">
+                    <div className="flex flex-col h-full">
+                      {/* Illustration Container */}
+                      <div className="relative mb-6 mx-auto">
+                        <div className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 p-4">
+                          <img 
+                            src={feature.illustration}
+                            alt={`${feature.title} illustration`}
+                            className="w-full h-full object-contain opacity-90 group-hover:scale-110 transition-transform duration-700 ease-out"
+                          />
+                          {/* Subtle glow effect on hover */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                        </div>
+                        
+                        {/* Floating icon badge */}
+                        <div className="absolute -bottom-2 -right-2 w-10 h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 rounded-xl bg-primary shadow-lg flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                          <feature.icon className="h-5 w-5 md:h-5.5 md:w-5.5 lg:h-6 lg:w-6 text-primary-foreground" />
+                        </div>
+                      </div>
+                      
+                      {/* Content */}
+                      <div className="flex-1 space-y-3">
+                        <h3 className="text-base md:text-lg lg:text-xl font-semibold text-foreground leading-tight group-hover:text-primary transition-colors duration-300">
+                          {feature.title}
+                        </h3>
+                        <p className="text-sm md:text-sm lg:text-base text-muted-foreground leading-relaxed">
+                          {feature.description}
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {feature.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {feature.description}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
+                  </CardContent>
+                </Card>
+              </div>
             ))}
           </div>
         </div>
