@@ -2,16 +2,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Server, Shield, Lock, Sparkles, Code, Mic, Github, Cloud } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
-// Import feature illustrations
-import featureServer from "@/assets/feature-server.png";
-import featureOAuth from "@/assets/feature-oauth.png";
-import featureRBAC from "@/assets/feature-rbac.png";
-import featureModels from "@/assets/feature-models.png";
-import featureAPI from "@/assets/feature-api.png";
-import featureVoice from "@/assets/feature-voice.png";
-import featureOpenSource from "@/assets/feature-opensource.png";
-import featureCloud from "@/assets/feature-cloud.png";
-
 const Features = () => {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -44,49 +34,65 @@ const Features = () => {
   const features = [
     {
       icon: Server,
-      illustration: featureServer,
+      color: "from-purple-500/20 to-purple-600/20",
+      iconColor: "text-purple-600",
+      hoverColor: "hover:from-purple-500/30 hover:to-purple-600/30",
       title: ["Private On-Premise", "Integration"],
       description: "Deploy AI agents within your infrastructure with complete data control.",
     },
     {
       icon: Shield,
-      illustration: featureOAuth,
+      color: "from-emerald-500/20 to-emerald-600/20",
+      iconColor: "text-emerald-600",
+      hoverColor: "hover:from-emerald-500/30 hover:to-emerald-600/30",
       title: ["Secure OAuth", "Integration"],
       description: "Connect with your provider or available providers securely.",
     },
     {
       icon: Lock,
-      illustration: featureRBAC,
+      color: "from-amber-500/20 to-amber-600/20",
+      iconColor: "text-amber-600",
+      hoverColor: "hover:from-amber-500/30 hover:to-amber-600/30",
       title: ["RBAC", "Policies"],
       description: "Role-based access control with granular permissions.",
     },
     {
       icon: Sparkles,
-      illustration: featureModels,
+      color: "from-pink-500/20 to-pink-600/20",
+      iconColor: "text-pink-600",
+      hoverColor: "hover:from-pink-500/30 hover:to-pink-600/30",
       title: ["Best AI Models", "to Choose From"],
       description: "Access cutting-edge models optimized for your use cases.",
     },
     {
       icon: Code,
-      illustration: featureAPI,
+      color: "from-blue-500/20 to-blue-600/20",
+      iconColor: "text-blue-600",
+      hoverColor: "hover:from-blue-500/30 hover:to-blue-600/30",
       title: ["RESTful", "APIs"],
       description: "Ready-to-use APIs for seamless integration.",
     },
     {
       icon: Mic,
-      illustration: featureVoice,
+      color: "from-indigo-500/20 to-indigo-600/20",
+      iconColor: "text-indigo-600",
+      hoverColor: "hover:from-indigo-500/30 hover:to-indigo-600/30",
       title: ["Voice and Chat", "Features"],
       description: "Multi-modal interactions with your AI agents.",
     },
     {
       icon: Github,
-      illustration: featureOpenSource,
+      color: "from-slate-500/20 to-slate-600/20",
+      iconColor: "text-slate-600",
+      hoverColor: "hover:from-slate-500/30 hover:to-slate-600/30",
       title: ["Open Source", "Tools"],
       description: "Built on trusted technologies for transparency.",
     },
     {
       icon: Cloud,
-      illustration: featureCloud,
+      color: "from-cyan-500/20 to-cyan-600/20",
+      iconColor: "text-cyan-600",
+      hoverColor: "hover:from-cyan-500/30 hover:to-cyan-600/30",
       title: ["Works on", "Any Cloud"],
       description: "Deploy on AWS, Azure, GCP without vendor lock-in.",
     },
@@ -130,21 +136,21 @@ const Features = () => {
                 >
                   <CardContent className="p-5 md:p-6 lg:p-7">
                     <div className="flex flex-col h-full">
-                      {/* Illustration Container */}
+                      {/* Icon Container */}
                       <div className="relative mb-6 mx-auto">
-                        <div className="w-32 h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 p-4">
-                          <img 
-                            src={feature.illustration}
-                            alt={`${Array.isArray(feature.title) ? feature.title.join(' ') : feature.title} illustration`}
-                            className="w-full h-full object-contain opacity-90 group-hover:scale-110 transition-transform duration-700 ease-out"
-                          />
-                          {/* Subtle glow effect on hover */}
-                          <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                        </div>
-                        
-                        {/* Floating icon badge */}
-                        <div className="absolute -bottom-2 -right-2 w-10 h-10 md:w-11 md:h-11 lg:w-12 lg:h-12 rounded-xl bg-primary shadow-lg flex items-center justify-center transform group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                          <feature.icon className="h-5 w-5 md:h-5.5 md:w-5.5 lg:h-6 lg:w-6 text-primary-foreground" />
+                        <div className={`
+                          w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 
+                          rounded-2xl bg-gradient-to-br ${feature.color} ${feature.hoverColor}
+                          flex items-center justify-center
+                          transform transition-all duration-500 ease-out
+                          group-hover:scale-110 group-hover:rotate-3
+                        `}>
+                          <feature.icon className={`
+                            h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 
+                            ${feature.iconColor}
+                            transition-all duration-300
+                            group-hover:scale-110
+                          `} />
                         </div>
                       </div>
                       
