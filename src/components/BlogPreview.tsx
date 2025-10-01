@@ -30,7 +30,7 @@ const BlogPreview = () => {
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-background">
+    <section ref={sectionRef} className="section-padding bg-section-secondary">
       <div className="container-width">
         <div className="px-6 md:px-10">
           {/* Header */}

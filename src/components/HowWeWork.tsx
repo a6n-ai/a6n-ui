@@ -46,7 +46,7 @@ const HowWeWork = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-gradient-subtle">
+    <section ref={sectionRef} className="section-padding bg-section-primary">
       <div className="container-width">
         <div className="px-6 md:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">

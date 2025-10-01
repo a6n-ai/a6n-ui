@@ -122,7 +122,7 @@ const AIUseCases = () => {
   }, []);
 
   return (
-    <section className="py-20 md:py-24 lg:py-32 bg-background/50">
+    <section className="py-20 md:py-24 lg:py-32 bg-section-primary">
       <div className="container-width">
         <div className="px-4 md:px-6 lg:px-8">
           {/* Section Header */}

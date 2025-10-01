@@ -33,7 +33,7 @@ const SocialProof = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-gradient-subtle">
+    <section ref={sectionRef} className="section-padding bg-section-primary">
       <div className="container-width">
         <div className="px-6 md:px-10">
           <div className="text-center space-y-8">

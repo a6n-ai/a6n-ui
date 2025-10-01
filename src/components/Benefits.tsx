@@ -45,7 +45,7 @@ const Benefits = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-background">
+    <section ref={sectionRef} className="section-padding bg-section-secondary">
       <div className="container-width">
         <div className="px-6 md:px-10">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
