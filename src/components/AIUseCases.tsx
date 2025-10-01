@@ -126,11 +126,11 @@ const AIUseCases = () => {
       <div className="container-width">
         <div className="px-4 md:px-6 lg:px-8">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16 lg:mb-20 space-y-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight">
+          <div className="mb-12 md:mb-16 lg:mb-20 space-y-6 max-w-3xl">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight text-left">
               Let a6n AI handle<br />the busywork.
             </h2>
-            <div className="text-base md:text-lg lg:text-xl text-muted-foreground">
+            <div className="text-base md:text-lg lg:text-xl text-muted-foreground text-left">
               Pick a use case to see how a6n AI helps your{" "}
               <span className="inline-block relative">
                 <span 

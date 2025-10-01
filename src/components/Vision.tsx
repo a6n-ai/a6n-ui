@@ -33,16 +33,16 @@ const Vision = () => {
     <section ref={sectionRef} className="section-padding bg-section-secondary">
       <div className="container-width">
         <div className="px-6 md:px-10">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
+          <div className="space-y-8">
             {/* Title */}
-            <h2 className={`text-3xl md:text-4xl font-bold text-foreground ${
+            <h2 className={`text-3xl md:text-4xl font-bold text-foreground text-left ${
               isVisible ? "animate-fade-in opacity-0" : ""
             }`}>
               The Future of Automation
             </h2>
 
             {/* Subtext */}
-            <p className={`text-base md:text-lg text-muted-foreground italic leading-relaxed ${
+            <p className={`text-base md:text-lg text-muted-foreground italic leading-relaxed text-left ${
               isVisible ? "animate-fade-in opacity-0 stagger-1" : ""
             }`}>
               From agency services to a self-serve platform, we begin as your AI partner 
@@ -50,7 +50,7 @@ const Vision = () => {
             </p>
 
             {/* Roadmap Timeline */}
-            <div className={`flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mt-12 ${
+            <div className={`flex flex-col md:flex-row items-start justify-start gap-4 md:gap-8 mt-12 ${
               isVisible ? "animate-fade-in-up opacity-0 stagger-2" : ""
             }`}>
               {roadmap.map((item, index) => (

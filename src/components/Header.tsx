@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import logo from "@/assets/logo.svg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -17,6 +18,31 @@ const Header = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Check for saved theme preference or default to light
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+    
+    setIsDarkMode(shouldBeDark);
+    if (shouldBeDark) {
+      document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDarkMode;
+    setIsDarkMode(newTheme);
+    
+    if (newTheme) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -70,8 +96,15 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:block">
+          {/* Desktop CTA and Theme Toggle */}
+          <div className="hidden md:flex items-center gap-4">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200"
+              aria-label="Toggle theme"
+            >
+              {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </button>
             <Button 
               variant="default" 
               className="bg-primary hover:bg-primary-hover text-primary-foreground font-medium"
@@ -108,12 +141,21 @@ const Header = () => {
                 {link.label}
               </Link>
             ))}
-            <Button 
-              variant="default"
-              className="mt-4 w-full bg-primary hover:bg-primary-hover text-primary-foreground font-medium"
-            >
-              Get Started
-            </Button>
+            <div className="flex items-center justify-between mt-4 gap-4">
+              <button
+                onClick={toggleTheme}
+                className="p-2 rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-all duration-200"
+                aria-label="Toggle theme"
+              >
+                {isDarkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              </button>
+              <Button 
+                variant="default"
+                className="flex-1 bg-primary hover:bg-primary-hover text-primary-foreground font-medium"
+              >
+                Get Started
+              </Button>
+            </div>
           </nav>
         </div>
       )}

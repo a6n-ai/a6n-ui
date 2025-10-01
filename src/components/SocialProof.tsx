@@ -36,16 +36,16 @@ const SocialProof = () => {
     <section ref={sectionRef} className="section-padding bg-section-primary">
       <div className="container-width">
         <div className="px-6 md:px-10">
-          <div className="text-center space-y-8">
+          <div className="space-y-8 max-w-3xl">
             {/* Title */}
-            <h3 className={`text-2xl font-bold text-foreground ${
+            <h3 className={`text-2xl font-bold text-foreground text-left ${
               isVisible ? "animate-fade-in opacity-0" : ""
             }`}>
               Built by Experts
             </h3>
 
             {/* Description */}
-            <p className={`text-sm md:text-base text-muted-foreground max-w-2xl mx-auto ${
+            <p className={`text-sm md:text-base text-muted-foreground text-left ${
               isVisible ? "animate-fade-in opacity-0 stagger-1" : ""
             }`}>
               Crafted by automation specialists with expertise in SaaS, AI, and cloud-scale systems.

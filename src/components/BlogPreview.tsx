@@ -34,13 +34,13 @@ const BlogPreview = () => {
       <div className="container-width">
         <div className="px-6 md:px-10">
           {/* Header */}
-          <div className="text-center space-y-4 mb-12">
-            <h2 className={`text-3xl md:text-4xl font-bold text-foreground ${
+          <div className="space-y-4 mb-12 max-w-3xl">
+            <h2 className={`text-3xl md:text-4xl font-bold text-foreground text-left ${
               isVisible ? "animate-fade-in opacity-0" : ""
             }`}>
               Automation Insights
             </h2>
-            <p className={`text-base md:text-lg text-muted-foreground ${
+            <p className={`text-base md:text-lg text-muted-foreground text-left ${
               isVisible ? "animate-fade-in opacity-0 stagger-1" : ""
             }`}>
               Explore tips, trends, and stories on AI-driven automation.
