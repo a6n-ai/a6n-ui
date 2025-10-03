@@ -1,5 +1,5 @@
 import {Card} from "@/components/ui/card";
-import {ArrowRight} from "lucide-react";
+import {ArrowRight, Users, TrendingUp, Target, BarChart3, Code2, Wallet, Settings2, MessageCircle} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
 import {Link} from "react-router-dom";
 import {caseStudies} from "@/data/caseStudies";
@@ -66,8 +66,9 @@ const AIUseCases = () => {
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight text-left mb-4">
                                 Let a6n AI handle<br/>the busywork.
                             </h2>
-                            <div className="text-base md:text-lg lg:text-xl text-muted-foreground text-left mb-6">
-                                Pick a use case to see how a6n AI helps your{" "}
+                            <div className="text-base md:text-lg lg:text-xl text-muted-foreground text-left mb-6 min-h-[3.5rem]">
+                                Pick a use case to see how a6n AI helps your
+                                <br/>
                                 <span className="inline-block relative">
                                     <span
                                         key={currentDepartment}
@@ -76,7 +77,7 @@ const AIUseCases = () => {
                                         {departments[currentDepartment]}
                                     </span>
                                 </span>
-                                .
+                                {" "}team.
                             </div>
                             <Link 
                                 to="/case-studies" 
@@ -86,22 +87,24 @@ const AIUseCases = () => {
                             </Link>
                         </div>
                         
-                        {/* Icon Circles */}
-                        <div className="flex justify-start lg:justify-end items-center gap-3 lg:flex-shrink-0">
+                        {/* Icon Grid */}
+                        <div className="flex justify-start lg:justify-end items-center gap-2 lg:flex-shrink-0 flex-wrap lg:flex-nowrap">
                             {[
-                                {bg: "bg-yellow-400", icon: "📋"},
-                                {bg: "bg-white dark:bg-gray-100", icon: "✏️"},
-                                {bg: "bg-blue-400", icon: "😊"},
-                                {bg: "bg-white dark:bg-gray-100", icon: "🎯"},
-                                {bg: "bg-white dark:bg-gray-100", icon: "📚"},
-                                {bg: "bg-red-400", icon: "🎩"},
-                            ].map((char, index) => (
+                                {Icon: Users, color: "from-purple-500/20 to-purple-600/20"},
+                                {Icon: TrendingUp, color: "from-pink-500/20 to-pink-600/20"},
+                                {Icon: Target, color: "from-emerald-500/20 to-emerald-600/20"},
+                                {Icon: BarChart3, color: "from-blue-500/20 to-blue-600/20"},
+                                {Icon: Code2, color: "from-indigo-500/20 to-indigo-600/20"},
+                                {Icon: Wallet, color: "from-amber-500/20 to-amber-600/20"},
+                                {Icon: Settings2, color: "from-cyan-500/20 to-cyan-600/20"},
+                                {Icon: MessageCircle, color: "from-rose-500/20 to-rose-600/20"},
+                            ].map((item, index) => (
                                 <div
                                     key={index}
-                                    className={`w-12 h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 ${char.bg} rounded-full flex items-center justify-center text-2xl md:text-3xl shadow-sm transform transition-all duration-300 hover:scale-110 hover:-translate-y-1`}
+                                    className={`w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center border border-border/50 transform transition-all duration-300 hover:scale-110 hover:-translate-y-1`}
                                     style={{animationDelay: `${index * 100}ms`}}
                                 >
-                                    {char.icon}
+                                    <item.Icon className="h-5 w-5 md:h-6 md:w-6 text-foreground/80"/>
                                 </div>
                             ))}
                         </div>
@@ -133,14 +136,14 @@ const AIUseCases = () => {
                                                 transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : '0ms'
                                             }}
                                         >
-                                            <div className="p-5 md:p-6 flex flex-col h-full gap-4">
+                                            <div className="p-4 flex flex-col h-full gap-3">
                                                 {/* Icon Box and Title */}
                                                 <div className="flex items-start gap-3">
-                                                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
-                                                        <Icon className="h-5 w-5 text-foreground/80"/>
+                                                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
+                                                        <Icon className="h-4 w-4 text-foreground/80"/>
                                                     </div>
                                                     <div className="flex-1">
-                                                        <h3 className="text-sm md:text-base font-semibold text-foreground leading-tight">
+                                                        <h3 className="text-sm font-semibold text-foreground leading-snug">
                                                             {useCase.title}
                                                         </h3>
                                                     </div>
@@ -149,7 +152,7 @@ const AIUseCases = () => {
                                                 {/* Arrow at bottom right */}
                                                 <div className="flex justify-end mt-auto">
                                                     <ArrowRight
-                                                        className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground group-hover:text-primary transition-all duration-300 group-hover:translate-x-1"/>
+                                                        className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-all duration-300 group-hover:translate-x-1"/>
                                                 </div>
                                             </div>
                                         </Card>
