@@ -1,20 +1,20 @@
 export interface BlogPost {
-  slug: string;
-  title: string;
-  excerpt: string;
-  content: string;
-  date: string;
-  author: string;
-  tags: string[];
-  readTime: string;
+    slug: string;
+    title: string;
+    excerpt: string;
+    content: string;
+    date: string;
+    author: string;
+    tags: string[];
+    readTime: string;
 }
 
 export const blogPosts: BlogPost[] = [
-  {
-    slug: "future-of-ai-automation",
-    title: "The Future of AI Automation: What Businesses Need to Know",
-    excerpt: "Discover how AI automation is transforming business operations and what you can do to stay ahead of the curve in 2025.",
-    content: `
+    {
+        slug: "future-of-ai-automation",
+        title: "The Future of AI Automation: What Businesses Need to Know",
+        excerpt: "Discover how AI automation is transforming business operations and what you can do to stay ahead of the curve in 2025.",
+        content: `
 # The Future of AI Automation: What Businesses Need to Know
 
 The landscape of business automation is evolving at an unprecedented pace. As we move into 2025, AI-driven automation is no longer a luxury—it's a necessity for businesses looking to remain competitive.
@@ -61,16 +61,16 @@ The future of business is automated, but it's also deeply human. The companies t
 
 Ready to transform your workflows? [Talk to us](/contact) about how a6n can help you build your AI-powered future.
     `,
-    date: "January 15, 2025",
-    author: "a6n Team",
-    tags: ["AI", "Automation", "Future Trends"],
-    readTime: "5 min read"
-  },
-  {
-    slug: "5-signs-your-business-needs-automation",
-    title: "5 Signs Your Business Needs AI Automation Now",
-    excerpt: "Is your team drowning in repetitive tasks? Learn the key indicators that it's time to implement AI automation in your workflows.",
-    content: `
+        date: "January 15, 2025",
+        author: "a6n Team",
+        tags: ["AI", "Automation", "Future Trends"],
+        readTime: "5 min read"
+    },
+    {
+        slug: "5-signs-your-business-needs-automation",
+        title: "5 Signs Your Business Needs AI Automation Now",
+        excerpt: "Is your team drowning in repetitive tasks? Learn the key indicators that it's time to implement AI automation in your workflows.",
+        content: `
 # 5 Signs Your Business Needs AI Automation Now
 
 Every business reaches a point where manual processes become a bottleneck. But how do you know when it's time to make the leap to AI automation? Here are five clear signs that your business is ready.
@@ -162,16 +162,16 @@ If you recognized your business in any of these signs, it's time to act. The jou
 
 [Book a free consultation](/contact) with a6n to discover how AI automation can solve your specific challenges. Let's build your automated future together.
     `,
-    date: "January 10, 2025",
-    author: "a6n Team",
-    tags: ["Business Strategy", "Automation", "Growth"],
-    readTime: "7 min read"
-  },
-  {
-    slug: "building-your-first-ai-workflow",
-    title: "Building Your First AI Workflow: A Step-by-Step Guide",
-    excerpt: "Ready to automate? This practical guide walks you through creating your first AI-powered workflow from concept to deployment.",
-    content: `
+        date: "January 10, 2025",
+        author: "a6n Team",
+        tags: ["Business Strategy", "Automation", "Growth"],
+        readTime: "7 min read"
+    },
+    {
+        slug: "building-your-first-ai-workflow",
+        title: "Building Your First AI Workflow: A Step-by-Step Guide",
+        excerpt: "Ready to automate? This practical guide walks you through creating your first AI-powered workflow from concept to deployment.",
+        content: `
 # Building Your First AI Workflow: A Step-by-Step Guide
 
 Creating your first AI automation workflow might seem daunting, but with the right approach, it's surprisingly straightforward. This guide will walk you through the process from initial planning to successful deployment.
@@ -385,9 +385,9 @@ You don't have to do this alone. a6n specializes in helping businesses build the
 
 [Schedule a workflow consultation](/contact) and let's build your first AI automation together. Your future self will thank you.
     `,
-    date: "January 5, 2025",
-    author: "a6n Team",
-    tags: ["Tutorial", "AI Workflows", "Implementation"],
-    readTime: "10 min read"
-  }
+        date: "January 5, 2025",
+        author: "a6n Team",
+        tags: ["Tutorial", "AI Workflows", "Implementation"],
+        readTime: "10 min read"
+    }
 ];

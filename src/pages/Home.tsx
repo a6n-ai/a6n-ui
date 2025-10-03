@@ -9,19 +9,19 @@ import BlogPreview from "@/components/BlogPreview";
 import FinalCTA from "@/components/FinalCTA";
 
 const Home = () => {
-  return (
-    <main className="pt-16">
-      <Hero />
-      <Features />
-      <AIUseCases />
-      <Benefits />
-      <HowWeWork />
-      <Vision />
-      <SocialProof />
-      <BlogPreview />
-      <FinalCTA />
-    </main>
-  );
+    return (
+        <main className="pt-16">
+            <Hero/>
+            <Features/>
+            <AIUseCases/>
+            <Benefits/>
+            <HowWeWork/>
+            <Vision/>
+            <SocialProof/>
+            <BlogPreview/>
+            <FinalCTA/>
+        </main>
+    );
 };
 
 export default Home;
