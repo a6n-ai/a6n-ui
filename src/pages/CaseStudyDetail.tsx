@@ -1,4 +1,4 @@
-import {useParams, Link, Navigate} from "react-router-dom";
+import {Link, Navigate, useParams} from "react-router-dom";
 import {caseStudies} from "@/data/caseStudies";
 import {ArrowLeft, CheckCircle2} from "lucide-react";
 import {Card} from "@/components/ui/card";
@@ -30,11 +30,13 @@ const CaseStudyDetail = () => {
 
                         {/* Header */}
                         <div className="max-w-4xl">
-                            <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${caseStudy.tagColor} mb-6`}>
+                            <span
+                                className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${caseStudy.tagColor} mb-6`}>
                                 {caseStudy.department}
                             </span>
                             <div className="flex items-start gap-6 mb-6">
-                                <div className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
+                                <div
+                                    className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
                                     <Icon className="h-8 w-8 md:h-10 md:w-10 text-foreground/80"/>
                                 </div>
                                 <div>
@@ -110,7 +112,8 @@ const CaseStudyDetail = () => {
                                     Share your use case
                                 </h2>
                                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                                    Have you discovered an amazing way to use a6n AI? Share your use case and help others unlock new possibilities.
+                                    Have you discovered an amazing way to use a6n AI? Share your use case and help
+                                    others unlock new possibilities.
                                 </p>
                             </div>
 
@@ -118,7 +121,8 @@ const CaseStudyDetail = () => {
                                 <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 text-center">
                                     <CheckCircle2 className="h-12 w-12 text-primary mx-auto mb-4"/>
                                     <h3 className="font-semibold text-foreground mb-2">Get featured</h3>
-                                    <p className="text-sm text-muted-foreground">Showcase in our gallery and social channels</p>
+                                    <p className="text-sm text-muted-foreground">Showcase in our gallery and social
+                                        channels</p>
                                 </Card>
                                 <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 text-center">
                                     <CheckCircle2 className="h-12 w-12 text-primary mx-auto mb-4"/>
@@ -128,7 +132,8 @@ const CaseStudyDetail = () => {
                                 <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 text-center">
                                     <CheckCircle2 className="h-12 w-12 text-primary mx-auto mb-4"/>
                                     <h3 className="font-semibold text-foreground mb-2">Earn recognition</h3>
-                                    <p className="text-sm text-muted-foreground">Build your reputation in the community</p>
+                                    <p className="text-sm text-muted-foreground">Build your reputation in the
+                                        community</p>
                                 </Card>
                             </div>
 

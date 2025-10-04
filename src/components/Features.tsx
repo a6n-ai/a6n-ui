@@ -1,5 +1,5 @@
 import {Card, CardContent} from "@/components/ui/card";
-import {Cloud, Code, Github, Lock, Mic, Server, Shield, Sparkles} from "lucide-react";
+import {Cloud, Code, Boxes, Lock, Mic, Server, Shield, Sparkles} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
 
 const Features = () => {
@@ -81,7 +81,7 @@ const Features = () => {
             description: "Multi-modal interactions with your AI agents.",
         },
         {
-            icon: Github,
+            icon: Boxes,
             color: "from-slate-500/20 to-slate-600/20",
             iconColor: "text-slate-600",
             hoverColor: "hover:from-slate-500/30 hover:to-slate-600/30",
@@ -104,10 +104,10 @@ const Features = () => {
                 <div className="px-4 md:px-6 lg:px-8">
                     {/* Section Header */}
                     <div className="mb-12 md:mb-16 lg:mb-20 space-y-4 max-w-3xl">
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight text-left">
+                        <h2 className="font-bold text-foreground tracking-tight text-left">
                             Enterprise-Grade Features
                         </h2>
-                        <p className="text-base md:text-lg lg:text-xl text-muted-foreground leading-relaxed text-left">
+                        <p className="text-base text-muted-foreground leading-relaxed text-left">
                             Use one or all. Best of breed products. Integrated as a platform.
                         </p>
                     </div>

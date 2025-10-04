@@ -1,4 +1,4 @@
-import {ArrowDown, ArrowRight, CheckCircle2, Headphones, Lightbulb, Link2, RefreshCw, Settings, Users} from "lucide-react";
+import {ArrowDown, ArrowRight, Headphones, Lightbulb, Link2, RefreshCw, Settings, Users} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
 import {Card, CardContent} from "./ui/card";
 
@@ -62,12 +62,14 @@ const HowWeWork = () => {
             <div className="container-width">
                 <div className="px-6 md:px-10">
                     {/* Header */}
-                    <div className={`text-center max-w-4xl mx-auto mb-16 ${isVisible ? "animate-fade-in opacity-0" : ""}`}>
+                    <div
+                        className={`text-center max-w-4xl mx-auto mb-16 ${isVisible ? "animate-fade-in opacity-0" : ""}`}>
                         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
                             How We Work
                         </h2>
                         <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                            At a6n, we simplify your journey to smarter automation with a clear, step-by-step process designed to save time and boost efficiency.
+                            At a6n, we simplify your journey to smarter automation with a clear, step-by-step process
+                            designed to save time and boost efficiency.
                         </p>
                     </div>
 
@@ -76,7 +78,7 @@ const HowWeWork = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
                             {mainSteps.map((step, index) => (
                                 <div key={step.title} className="relative">
-                                    <Card 
+                                    <Card
                                         className={`h-full border-2 hover:border-primary/50 transition-all duration-300 ${
                                             isVisible ? "animate-fade-in opacity-0" : ""
                                         }`}
@@ -84,7 +86,8 @@ const HowWeWork = () => {
                                     >
                                         <CardContent className="p-6 space-y-4">
                                             <div className="flex items-center justify-between mb-4">
-                                                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                                                <div
+                                                    className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
                                                     <step.icon className="h-7 w-7 text-primary"/>
                                                 </div>
                                                 <span className="text-4xl font-bold text-primary/20">
@@ -99,18 +102,18 @@ const HowWeWork = () => {
                                             </p>
                                         </CardContent>
                                     </Card>
-                                    
+
                                     {/* Arrow connector - hidden on mobile, last one hidden */}
                                     {index < mainSteps.length - 1 && (
                                         <div className="hidden md:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10">
-                                            <ArrowRight className="h-6 w-6 text-primary" />
+                                            <ArrowRight className="h-6 w-6 text-primary"/>
                                         </div>
                                     )}
-                                    
+
                                     {/* Arrow down on mobile */}
                                     {index < mainSteps.length - 1 && (
                                         <div className="flex md:hidden justify-center my-4">
-                                            <ArrowDown className="h-6 w-6 text-primary" />
+                                            <ArrowDown className="h-6 w-6 text-primary"/>
                                         </div>
                                     )}
                                 </div>
@@ -121,15 +124,16 @@ const HowWeWork = () => {
                     {/* Continuous Support Section */}
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-8">
-                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold mb-4">
-                                <RefreshCw className="h-4 w-4" />
+                            <div
+                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold mb-4">
+                                <RefreshCw className="h-4 w-4"/>
                                 <span>Continuous Throughout Process</span>
                             </div>
                         </div>
-                        
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             {continuousSupport.map((item, index) => (
-                                <Card 
+                                <Card
                                     key={item.title}
                                     className={`border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 hover:border-primary/40 transition-all duration-300 ${
                                         isVisible ? "animate-fade-in opacity-0" : ""
@@ -138,7 +142,8 @@ const HowWeWork = () => {
                                 >
                                     <CardContent className="p-6 space-y-4">
                                         <div className="flex items-start gap-4">
-                                            <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                            <div
+                                                className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
                                                 <item.icon className="h-6 w-6 text-primary"/>
                                             </div>
                                             <div className="space-y-2 flex-1">

@@ -1,5 +1,5 @@
 import {Card} from "@/components/ui/card";
-import {ArrowRight, Users, TrendingUp, Target, BarChart3, Code2, Wallet, Settings2, MessageCircle} from "lucide-react";
+import {ArrowRight, BarChart3, Code2, MessageCircle, Settings2, Target, TrendingUp, Users, Wallet} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
 import {Link} from "react-router-dom";
 import {caseStudies} from "@/data/caseStudies";
@@ -61,12 +61,14 @@ const AIUseCases = () => {
             <div className="container-width">
                 <div className="px-4 md:px-6 lg:px-8">
                     {/* Section Header */}
-                    <div className="mb-12 md:mb-16 lg:mb-20 space-y-6 flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8">
+                    <div
+                        className="mb-12 md:mb-16 lg:mb-20 space-y-6 flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8">
                         <div className="max-w-2xl">
                             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight text-left mb-4">
                                 Let a6n AI handle<br/>the busywork.
                             </h2>
-                            <div className="text-base md:text-lg lg:text-xl text-muted-foreground text-left mb-6 min-h-[3.5rem]">
+                            <div
+                                className="text-base md:text-lg lg:text-xl text-muted-foreground text-left mb-6 min-h-[3.5rem]">
                                 Pick a use case to see how a6n AI helps your
                                 <br/>
                                 <span className="inline-block relative">
@@ -79,16 +81,17 @@ const AIUseCases = () => {
                                 </span>
                                 {" "}team.
                             </div>
-                            <Link 
-                                to="/case-studies" 
+                            <Link
+                                to="/case-studies"
                                 className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors"
                             >
                                 Explore more <ArrowRight className="ml-2 h-4 w-4"/>
                             </Link>
                         </div>
-                        
+
                         {/* Icon Grid */}
-                        <div className="flex justify-start lg:justify-end items-center gap-2 lg:flex-shrink-0 flex-wrap lg:flex-nowrap">
+                        <div
+                            className="flex justify-start lg:justify-end items-center gap-2 lg:flex-shrink-0 flex-wrap lg:flex-nowrap">
                             {[
                                 {Icon: Users, color: "from-purple-500/20 to-purple-600/20"},
                                 {Icon: TrendingUp, color: "from-pink-500/20 to-pink-600/20"},
@@ -128,9 +131,9 @@ const AIUseCases = () => {
                                                 transition-all duration-500 ease-out cursor-pointer
                                                 bg-gradient-to-br ${useCase.color} ${useCase.hoverColor}
                                                 ${visibleCards.has(index)
-                                                    ? 'opacity-100 translate-y-0'
-                                                    : 'opacity-0 translate-y-8'
-                                                }
+                                                ? 'opacity-100 translate-y-0'
+                                                : 'opacity-0 translate-y-8'
+                                            }
                                             `}
                                             style={{
                                                 transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : '0ms'
@@ -138,10 +141,11 @@ const AIUseCases = () => {
                                         >
                                             <div className="p-5 flex flex-col justify-between h-full">
                                                 {/* Icon Box */}
-                                                <div className="w-10 h-10 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30 mb-4">
+                                                <div
+                                                    className="w-10 h-10 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30 mb-4">
                                                     <Icon className="h-5 w-5 text-foreground/80"/>
                                                 </div>
-                                                
+
                                                 {/* Title with inline arrow */}
                                                 <div className="flex items-center justify-between gap-2">
                                                     <h3 className="text-sm font-semibold text-foreground leading-tight text-left">

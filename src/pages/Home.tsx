@@ -10,7 +10,7 @@ import FinalCTA from "@/components/FinalCTA";
 
 const Home = () => {
     return (
-        <main className="pt-16">
+        <main>
             <Hero/>
             <Features/>
             <AIUseCases/>
