@@ -8,7 +8,11 @@ import {
     InputButtonProvider,
     InputButtonSubmit
 } from "./ui/imput-button";
-import {ArrowUpRightIcon} from "lucide-react";
+import {ArrowUpRightIcon, Check, Loader2} from 'lucide-react';
+import {motion} from 'motion/react';
+import React from 'react';
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
 const Hero = () => {
     const rotatingTexts = [
@@ -25,12 +29,100 @@ const Hero = () => {
         "Legal"
     ];
 
+    // Memoize wave colors to avoid resetting WavyBackground animation on re-renders
+    const waveColors = React.useMemo(() => ["#a5f3fc", "#d8b4fe", "#fbcfe8", "#fde68a"], []);
+
+    const [showInput, setShowInput] = React.useState(false);
+    const [pending, startTransition] = React.useTransition();
+    const [success, setSuccess] = React.useState(false);
+    const [value, setValue] = React.useState('');
+
+    const handleSubmit = React.useCallback(
+        (e: React.FormEvent<HTMLFormElement>) => {
+            e.preventDefault();
+
+            if (!showInput) {
+                setShowInput(true);
+                return;
+            }
+
+            startTransition(() => {
+                (async () => {
+                    await sleep(2000);
+                    setSuccess(true);
+                    await sleep(2000);
+                    setSuccess(false);
+                    setShowInput(false);
+                    setValue('');
+                })();
+            });
+        },
+        [showInput]
+    );
+
+    const renderWaitlistForm = () => {
+        let submitContent: React.ReactNode;
+        if (success) {
+            submitContent = (
+                <motion.span
+                    key="success"
+                    initial={{opacity: 0, scale: 0}}
+                    animate={{opacity: 1, scale: 1}}
+                    transition={{duration: 0.2}}
+                >
+                    <Check/>
+                </motion.span>
+            );
+        } else if (pending) {
+            submitContent = (
+                <motion.span
+                    key="pending"
+                    initial={{opacity: 0, scale: 0}}
+                    animate={{opacity: 1, scale: 1}}
+                    transition={{duration: 0.2}}
+                >
+                    <Loader2 className="animate-spin"/>
+                </motion.span>
+            );
+        } else {
+            submitContent = 'Join the Waitlist';
+        }
+
+        return (
+            <form onSubmit={handleSubmit} className="w-full flex items-center justify-center">
+                <InputButtonProvider showInput={showInput} setShowInput={setShowInput}>
+                    <InputButton>
+                        <InputButtonAction onClick={() => {}}>
+                            Talk to Us
+                        </InputButtonAction>
+                        <InputButtonSubmit
+                            onClick={() => {}}
+                            type="submit"
+                            disabled={pending}
+                            className={pending || success ? 'aspect-square px-0' : ''}
+                        >
+                            {submitContent}
+                        </InputButtonSubmit>
+                    </InputButton>
+                    <InputButtonInput
+                        type="email"
+                        placeholder="your-email@example.com"
+                        value={value}
+                        onChange={(e) => setValue((e.target as HTMLInputElement).value)}
+                        disabled={pending}
+                        autoFocus
+                    />
+                </InputButtonProvider>
+            </form>
+        );
+    };
+
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-section-primary">
             <div className="relative h-screen w-full overflow-hidden">
                 <WavyBackground
                     backgroundFill="white"
-                    colors={["#a5f3fc", "#d8b4fe", "#fbcfe8", "#fde68a"]}
+                    colors={waveColors}
                     waveWidth={50}
                     blur={10}
                     speed="fast"
@@ -61,7 +153,8 @@ const Hero = () => {
                             <h4 className="scroll-m-20 text-2xl font-medium tracking-tight">
                                 At a6n, we supercharge your team with private AI agents built for
                                 <RotatingText text={rotatingTexts} duration={3000}
-                                              transition={{duration: 0.5, ease: "easeInOut"}} className="text-primary font-semibold"/>
+                                              transition={{duration: 0.5, ease: "easeInOut"}}
+                                              className="text-primary font-semibold"/>
                             </h4>
 
                             {/* Subtext */}
@@ -71,13 +164,7 @@ const Hero = () => {
 
                             <div
                                 className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in opacity-0 stagger-5">
-                                <InputButtonProvider>
-                                    <InputButton>
-                                        <InputButtonAction>Talk to Us</InputButtonAction>
-                                        <InputButtonSubmit>Join the Waitlist</InputButtonSubmit>
-                                    </InputButton>
-                                    <InputButtonInput type="email" placeholder="your-email@example.com"/>
-                                </InputButtonProvider>
+                                {renderWaitlistForm()}
                             </div>
                         </div>
                     </div>
