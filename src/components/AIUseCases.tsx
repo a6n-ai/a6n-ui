@@ -111,8 +111,8 @@ const AIUseCases = () => {
                     </div>
 
                     {/* Use Cases Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
-                        {caseStudies.map((useCase, index) => {
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
+                        {caseStudies.slice(0, 8).map((useCase, index) => {
                             const Icon = useCase.icon;
                             return (
                                 <div
@@ -136,21 +136,19 @@ const AIUseCases = () => {
                                                 transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : '0ms'
                                             }}
                                         >
-                                            <div className="p-4 flex flex-col h-full gap-3">
-                                                {/* Icon Box and Title */}
-                                                <div className="flex items-start gap-3">
-                                                    <div className="flex-shrink-0 w-9 h-9 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
-                                                        <Icon className="h-4 w-4 text-foreground/80"/>
-                                                    </div>
-                                                    <div className="flex-1">
-                                                        <h3 className="text-sm font-semibold text-foreground leading-snug">
-                                                            {useCase.title}
-                                                        </h3>
-                                                    </div>
+                                            <div className="p-4 flex flex-col items-center text-center h-full gap-3">
+                                                {/* Icon Box */}
+                                                <div className="w-10 h-10 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
+                                                    <Icon className="h-5 w-5 text-foreground/80"/>
                                                 </div>
+                                                
+                                                {/* Title */}
+                                                <h3 className="text-sm font-semibold text-foreground leading-tight flex-1">
+                                                    {useCase.title}
+                                                </h3>
 
-                                                {/* Arrow at bottom right */}
-                                                <div className="flex justify-end mt-auto">
+                                                {/* Arrow at bottom */}
+                                                <div className="mt-auto">
                                                     <ArrowRight
                                                         className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-all duration-300 group-hover:translate-x-1"/>
                                                 </div>

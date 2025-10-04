@@ -95,19 +95,49 @@ const CaseStudyDetail = () => {
                                 </ul>
                             </Card>
 
-                            {/* CTA */}
-                            <div className="text-center pt-8">
-                                <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                                    Ready to transform your {caseStudy.department.replace(' AI', '')} workflow?
-                                </h3>
-                                <p className="text-lg text-muted-foreground mb-6">
-                                    See how a6n AI can help your team work smarter, not harder.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Share Your Use Case Section */}
+            <section className="py-20 md:py-24 bg-background">
+                <div className="container-width">
+                    <div className="px-4 md:px-6 lg:px-8">
+                        <div className="max-w-6xl mx-auto">
+                            <div className="text-center mb-12">
+                                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                                    Share your use case
+                                </h2>
+                                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                                    Have you discovered an amazing way to use a6n AI? Share your use case and help others unlock new possibilities.
                                 </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                                <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 text-center">
+                                    <CheckCircle2 className="h-12 w-12 text-primary mx-auto mb-4"/>
+                                    <h3 className="font-semibold text-foreground mb-2">Get featured</h3>
+                                    <p className="text-sm text-muted-foreground">Showcase in our gallery and social channels</p>
+                                </Card>
+                                <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 text-center">
+                                    <CheckCircle2 className="h-12 w-12 text-primary mx-auto mb-4"/>
+                                    <h3 className="font-semibold text-foreground mb-2">Promote your business</h3>
+                                    <p className="text-sm text-muted-foreground">Gain visibility for your brand</p>
+                                </Card>
+                                <Card className="p-6 bg-card/50 backdrop-blur-sm border-border/50 text-center">
+                                    <CheckCircle2 className="h-12 w-12 text-primary mx-auto mb-4"/>
+                                    <h3 className="font-semibold text-foreground mb-2">Earn recognition</h3>
+                                    <p className="text-sm text-muted-foreground">Build your reputation in the community</p>
+                                </Card>
+                            </div>
+
+                            <div className="text-center">
                                 <Link
                                     to="/contact"
-                                    className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors"
+                                    className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-lg hover:bg-primary/90 transition-colors text-lg"
                                 >
-                                    Get Started
+                                    Submit Your Use Case
                                 </Link>
                             </div>
                         </div>

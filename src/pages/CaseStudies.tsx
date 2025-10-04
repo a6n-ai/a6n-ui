@@ -2,26 +2,52 @@ import {Card} from "@/components/ui/card";
 import {ArrowRight} from "lucide-react";
 import {Link} from "react-router-dom";
 import {caseStudies} from "@/data/caseStudies";
+import {useState} from "react";
 
 const CaseStudies = () => {
+    const [selectedFilter, setSelectedFilter] = useState<string>("All");
+    
+    const departments = ["All", ...Array.from(new Set(caseStudies.map(cs => cs.department)))];
+    
+    const filteredCaseStudies = selectedFilter === "All" 
+        ? caseStudies 
+        : caseStudies.filter(cs => cs.department === selectedFilter);
+    
     return (
         <main className="pt-16">
             <section className="py-20 md:py-24 lg:py-32 bg-section-primary">
                 <div className="container-width">
                     <div className="px-4 md:px-6 lg:px-8">
                         {/* Header */}
-                        <div className="mb-12 md:mb-16 space-y-4 max-w-3xl">
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight text-left">
+                        <div className="text-center mb-12 md:mb-16">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight mb-4">
                                 Explore All Case Studies
                             </h1>
-                            <p className="text-lg md:text-xl text-muted-foreground text-left">
+                            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
                                 Discover how a6n AI transforms workflows across every department in your organization.
                             </p>
+                            
+                            {/* Filter Tabs */}
+                            <div className="flex flex-wrap justify-center gap-3">
+                                {departments.map((dept) => (
+                                    <button
+                                        key={dept}
+                                        onClick={() => setSelectedFilter(dept)}
+                                        className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                                            selectedFilter === dept
+                                                ? "bg-primary text-primary-foreground shadow-lg"
+                                                : "bg-card text-muted-foreground hover:bg-card/80 border border-border"
+                                        }`}
+                                    >
+                                        {dept}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
 
                         {/* Case Studies Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                            {caseStudies.map((caseStudy) => {
+                            {filteredCaseStudies.map((caseStudy) => {
                                 const Icon = caseStudy.icon;
                                 return (
                                     <Link
