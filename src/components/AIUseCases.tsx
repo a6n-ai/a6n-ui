@@ -136,21 +136,19 @@ const AIUseCases = () => {
                                                 transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : '0ms'
                                             }}
                                         >
-                                            <div className="p-4 flex flex-col items-center text-center h-full gap-3">
+                                            <div className="p-5 flex flex-col justify-between h-full">
                                                 {/* Icon Box */}
-                                                <div className="w-10 h-10 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
+                                                <div className="w-10 h-10 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30 mb-4">
                                                     <Icon className="h-5 w-5 text-foreground/80"/>
                                                 </div>
                                                 
-                                                {/* Title */}
-                                                <h3 className="text-sm font-semibold text-foreground leading-tight flex-1">
-                                                    {useCase.title}
-                                                </h3>
-
-                                                {/* Arrow at bottom */}
-                                                <div className="mt-auto">
+                                                {/* Title with inline arrow */}
+                                                <div className="flex items-center justify-between gap-2">
+                                                    <h3 className="text-sm font-semibold text-foreground leading-tight text-left">
+                                                        {useCase.title}
+                                                    </h3>
                                                     <ArrowRight
-                                                        className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-all duration-300 group-hover:translate-x-1"/>
+                                                        className="h-4 w-4 flex-shrink-0 text-muted-foreground group-hover:text-primary transition-all duration-300 group-hover:translate-x-1"/>
                                                 </div>
                                             </div>
                                         </Card>
