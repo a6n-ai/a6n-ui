@@ -1,5 +1,6 @@
-import {RefreshCw, Rocket, Search, Wrench} from "lucide-react";
+import {ArrowDown, ArrowRight, CheckCircle2, Headphones, Lightbulb, Link2, RefreshCw, Settings, Users} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
+import {Card, CardContent} from "./ui/card";
 
 const HowWeWork = () => {
     const [isVisible, setIsVisible] = useState(false);
@@ -22,26 +23,37 @@ const HowWeWork = () => {
         return () => observer.disconnect();
     }, []);
 
-    const steps = [
+    const mainSteps = [
         {
-            icon: Search,
-            title: "Discover",
-            description: "Analyze your workflows and goals.",
+            icon: Users,
+            title: "Understand Your Needs",
+            description: "We start by listening to your team's challenges, analyzing workflows across sales, HR, healthcare, or other departments to pinpoint where automation can make the biggest impact.",
+            step: 1,
         },
         {
-            icon: Wrench,
-            title: "Build",
-            description: "Create tailored automation solutions.",
+            icon: Settings,
+            title: "Custom AI Setup",
+            description: "Our experts tailor our AI platform to your specific tasks—whether it's logging calls, screening candidates, or managing patient intake—ensuring a seamless fit for your business.",
+            step: 2,
         },
         {
-            icon: Rocket,
-            title: "Deploy",
-            description: "Integrate and train your team.",
+            icon: Link2,
+            title: "Seamless Integration",
+            description: "We connect a6n to your existing tools (like CRM or calendars) with minimal disruption, setting up automated processes that reduce manual effort by up to 50%.",
+            step: 3,
+        },
+    ];
+
+    const continuousSupport = [
+        {
+            icon: Lightbulb,
+            title: "Train & Optimize",
+            description: "We guide your team with easy training and fine-tune the system based on real-time feedback, keeping it aligned with your evolving needs.",
         },
         {
-            icon: RefreshCw,
-            title: "Optimize",
-            description: "Ongoing support and refinement.",
+            icon: Headphones,
+            title: "Ongoing Support",
+            description: "Our team provides continuous assistance, ensuring your automation runs smoothly and helps you focus on growth every step of the way.",
         },
     ];
 
@@ -49,48 +61,100 @@ const HowWeWork = () => {
         <section ref={sectionRef} className="section-padding bg-section-primary">
             <div className="container-width">
                 <div className="px-6 md:px-10">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
-                        {/* Left - Title and Description */}
-                        <div className={`space-y-6 ${isVisible ? "animate-fade-in opacity-0" : ""}`}>
-                            <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                                How We Work
-                            </h2>
-                            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                                We partner with businesses to craft custom AI automation workflows,
-                                starting with agency services and evolving to a scalable product.
-                            </p>
-                        </div>
+                    {/* Header */}
+                    <div className={`text-center max-w-4xl mx-auto mb-16 ${isVisible ? "animate-fade-in opacity-0" : ""}`}>
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                            How We Work
+                        </h2>
+                        <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                            At a6n, we simplify your journey to smarter automation with a clear, step-by-step process designed to save time and boost efficiency.
+                        </p>
+                    </div>
 
-                        {/* Right - Process Steps */}
-                        <div className="space-y-6">
-                            {steps.map((step, index) => (
-                                <div
-                                    key={step.title}
-                                    className={`flex items-start space-x-4 ${
-                                        isVisible ? "animate-slide-in opacity-0" : ""
-                                    }`}
-                                    style={{animationDelay: `${index * 0.15}s`}}
-                                >
-                                    <div
-                                        className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                                        <step.icon className="h-6 w-6 text-primary"/>
-                                    </div>
-                                    <div className="space-y-2">
-                                        <h3 className="font-semibold text-foreground">
-                                            {index + 1}. {step.title}
-                                        </h3>
-                                        <p className="text-sm text-muted-foreground">
-                                            {step.description}
-                                        </p>
-                                    </div>
+                    {/* Main Process Flow */}
+                    <div className="max-w-5xl mx-auto mb-16">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+                            {mainSteps.map((step, index) => (
+                                <div key={step.title} className="relative">
+                                    <Card 
+                                        className={`h-full border-2 hover:border-primary/50 transition-all duration-300 ${
+                                            isVisible ? "animate-fade-in opacity-0" : ""
+                                        }`}
+                                        style={{animationDelay: `${index * 0.15}s`}}
+                                    >
+                                        <CardContent className="p-6 space-y-4">
+                                            <div className="flex items-center justify-between mb-4">
+                                                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                                                    <step.icon className="h-7 w-7 text-primary"/>
+                                                </div>
+                                                <span className="text-4xl font-bold text-primary/20">
+                                                    {step.step}
+                                                </span>
+                                            </div>
+                                            <h3 className="font-bold text-lg text-foreground">
+                                                {step.title}
+                                            </h3>
+                                            <p className="text-sm text-muted-foreground leading-relaxed">
+                                                {step.description}
+                                            </p>
+                                        </CardContent>
+                                    </Card>
+                                    
+                                    {/* Arrow connector - hidden on mobile, last one hidden */}
+                                    {index < mainSteps.length - 1 && (
+                                        <div className="hidden md:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10">
+                                            <ArrowRight className="h-6 w-6 text-primary" />
+                                        </div>
+                                    )}
+                                    
+                                    {/* Arrow down on mobile */}
+                                    {index < mainSteps.length - 1 && (
+                                        <div className="flex md:hidden justify-center my-4">
+                                            <ArrowDown className="h-6 w-6 text-primary" />
+                                        </div>
+                                    )}
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* Vertical Divider - hidden on mobile */}
-                    <div
-                        className="hidden lg:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-3/4 w-px bg-border"></div>
+                    {/* Continuous Support Section */}
+                    <div className="max-w-5xl mx-auto">
+                        <div className="text-center mb-8">
+                            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold mb-4">
+                                <RefreshCw className="h-4 w-4" />
+                                <span>Continuous Throughout Process</span>
+                            </div>
+                        </div>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {continuousSupport.map((item, index) => (
+                                <Card 
+                                    key={item.title}
+                                    className={`border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 hover:border-primary/40 transition-all duration-300 ${
+                                        isVisible ? "animate-fade-in opacity-0" : ""
+                                    }`}
+                                    style={{animationDelay: `${0.45 + index * 0.15}s`}}
+                                >
+                                    <CardContent className="p-6 space-y-4">
+                                        <div className="flex items-start gap-4">
+                                            <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
+                                                <item.icon className="h-6 w-6 text-primary"/>
+                                            </div>
+                                            <div className="space-y-2 flex-1">
+                                                <h3 className="font-bold text-lg text-foreground">
+                                                    {item.title}
+                                                </h3>
+                                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                                    {item.description}
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </CardContent>
+                                </Card>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
