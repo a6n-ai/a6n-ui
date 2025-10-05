@@ -1,56 +1,145 @@
-# Welcome to your Lovable project
+# a6n - AI Automation Platform
 
-## Project info
+Transform your business with custom AI solutions. Automate workflows and boost productivity with AI agents tailored to your needs.
 
 **URL**: https://lovable.dev/projects/c5fe5b12-4670-4eaf-a113-439d4cad4a2c
 
-## How can I edit this code?
+## 🚀 Features
 
-There are several ways of editing your application.
+- **Custom AI Solutions**: Tailored AI agents for HR, Sales, Marketing, and more
+- **Modern Tech Stack**: Built with React 18, TypeScript, Tailwind CSS v4, and Vite
+- **Responsive Design**: Beautiful, mobile-first design with Geist font
+- **Optimized Performance**: Production-ready with code splitting and minification
+- **SEO Ready**: Comprehensive meta tags and semantic HTML
 
-**Use Lovable**
+## 📦 Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/c5fe5b12-4670-4eaf-a113-439d4cad4a2c) and start prompting.
+- **Framework**: React 18 + TypeScript
+- **Build Tool**: Vite (with SWC)
+- **Styling**: Tailwind CSS v4 with OKLCH colors
+- **UI Components**: Radix UI + shadcn/ui
+- **Routing**: React Router v6
+- **Animations**: Motion (Framer Motion)
+- **Icons**: Lucide React
+- **State Management**: TanStack Query
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Development
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js 18+ and npm
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
+# Navigate to the project directory
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Install dependencies
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server with auto-reloading
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The app will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
 
-**Use GitHub Codespaces**
+```sh
+# Create optimized production build
+npm run build
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Preview production build locally
+npm run preview
+```
 
-## What technologies are used for this project?
+## 📁 Project Structure
+
+```
+src/
+├── components/          # Reusable components
+│   ├── ui/             # shadcn/ui components
+│   └── text/           # Text components (rotating text, etc.)
+├── pages/              # Route pages
+├── data/               # Static data (blog posts, case studies)
+├── hooks/              # Custom React hooks
+├── lib/                # Utility functions
+└── assets/             # Images and static assets
+```
+
+## 🎨 Design System
+
+The project uses a comprehensive design system with:
+- OKLCH color space for better color accuracy
+- Custom CSS variables for theming
+- Geist font for modern typography
+- Tailwind v4 with `@theme` directive in `src/index.css`
+
+## 📝 Key Pages
+
+- `/` - Home page with hero, features, and use cases
+- `/solutions` - Solutions overview
+- `/case-studies` - Customer case studies with filtering
+- `/blog` - Blog posts with markdown support
+- `/about` - About the company
+- `/contact` - Contact form
+
+## 🔧 Configuration
+
+### Vite Config
+
+Production optimizations included:
+- Code splitting for vendors and UI libraries
+- Terser minification with console removal
+- CSS minification
+- Optimized chunk sizes (1000kb warning limit)
+
+### Tailwind Config
+
+Minimal config for v4 - most styling is in `src/index.css` using the `@theme` directive.
+
+## 🚀 Deployment
+
+### Using Lovable
+
+Simply open [Lovable](https://lovable.dev/projects/c5fe5b12-4670-4eaf-a113-439d4cad4a2c) and click on Share → Publish.
+
+### Custom Domain
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+
+### Manual Deployment
+
+The `npm run build` command creates an optimized production build in the `dist/` directory.
+
+Deploy to any static hosting service:
+
+- **Netlify**: `netlify deploy --prod --dir=dist`
+- **Vercel**: `vercel --prod`
+- **AWS S3**: Upload `dist/` contents to S3 bucket
+- **GitHub Pages**: Use GitHub Actions with build output
+
+## 📊 Performance
+
+- Optimized bundle size with code splitting
+- Lazy loading for images and components
+- Tree-shaking enabled
+- Terser minification for production
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 Technologies
 
 This project is built with:
 
@@ -58,16 +147,8 @@ This project is built with:
 - TypeScript
 - React
 - shadcn-ui
-- Tailwind CSS
+- Tailwind CSS v4
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/c5fe5b12-4670-4eaf-a113-439d4cad4a2c) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Built with ❤️ using [Lovable](https://lovable.dev)
