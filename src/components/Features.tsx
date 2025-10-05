@@ -104,10 +104,10 @@ const Features = () => {
                 <div className="px-4 md:px-6 lg:px-8">
                     {/* Section Header */}
                     <div className="mb-12 md:mb-16 lg:mb-20 space-y-4 max-w-3xl">
-                        <h2 className="font-bold text-foreground tracking-tight text-left">
+                        <h1 className="text-left">
                             Enterprise-Grade Features
-                        </h2>
-                        <p className="text-base text-muted-foreground leading-relaxed text-left">
+                        </h1>
+                        <p className="text-left">
                             Use one or all. Best of breed products. Integrated as a platform.
                         </p>
                     </div>
@@ -157,8 +157,8 @@ const Features = () => {
                                             {/* Content */}
                                             <div className="flex-1 space-y-2">
                                                 <h3 className="text-base md:text-lg lg:text-xl font-semibold text-foreground leading-tight group-hover:text-primary transition-colors duration-300">
-                                                    <span className="block">{(feature.title as string[])[0]}</span>
-                                                    <span className="block">{(feature.title as string[])[1]}</span>
+                                                    <span className="block">{(feature.title)[0]}</span>
+                                                    <span className="block">{(feature.title)[1]}</span>
                                                 </h3>
                                                 <p className="text-xs md:text-sm lg:text-sm text-muted-foreground leading-relaxed pt-1">
                                                     {feature.description}

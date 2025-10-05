@@ -1,34 +1,14 @@
 import {Card} from "@/components/ui/card";
 import {ArrowRight, BarChart3, Code2, MessageCircle, Settings2, Target, TrendingUp, Users, Wallet} from "lucide-react";
-import {useEffect, useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Link} from "react-router-dom";
+import AccentLink from "@/components/ui/accent-link";
 import {caseStudies} from "@/data/caseStudies";
+import DepartmentsRotatingText from "./text/departments-rotating-text";
 
 const AIUseCases = () => {
-    const [currentDepartment, setCurrentDepartment] = useState(0);
     const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-    const departments = [
-        "HR",
-        "Marketing",
-        "Sales",
-        "Analytics",
-        "Software",
-        "Finance",
-        "Operations",
-        "Customer Support",
-        "Product",
-        "Legal"
-    ];
-
-    // Rotate departments
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentDepartment((prev) => (prev + 1) % departments.length);
-        }, 2500);
-        return () => clearInterval(interval);
-    }, [departments.length]);
 
     // Intersection observer for card animations
     useEffect(() => {
@@ -62,31 +42,25 @@ const AIUseCases = () => {
                 <div className="px-4 md:px-6 lg:px-8">
                     {/* Section Header */}
                     <div
-                        className="mb-12 md:mb-16 lg:mb-20 space-y-6 flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8">
-                        <div className="max-w-2xl">
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground tracking-tight text-left mb-4">
+                        className="mb-6 md:mb-8 lg:mb-10 space-y-6 flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8">
+                        <div className="mb-6 md:mb-6 lg:mb-6 space-y-4 max-w-3xl">
+                            <h1 className="text-left">
                                 Let a6n AI handle<br/>the busywork.
-                            </h2>
-                            <div
-                                className="text-base md:text-lg lg:text-xl text-muted-foreground text-left mb-6 min-h-[3.5rem]">
-                                Pick a use case to see how a6n AI helps your
-                                <br/>
-                                <span className="inline-block relative">
-                                    <span
-                                        key={currentDepartment}
-                                        className="text-primary font-semibold animate-fade-in"
-                                    >
-                                        {departments[currentDepartment]}
-                                    </span>
-                                </span>
+                            </h1>
+                            <p>
+                                Pick a use case to see how a6n AI helps your{" "}
+                                <DepartmentsRotatingText duration={3000}
+                                                         transition={{duration: 0.5, ease: "easeInOut"}}
+                                                         className="text-primary font-semibold inline-block align-baseline"
+                                                         containerClassName="inline-block align-baseline py-0 overflow-visible"/>
                                 {" "}team.
-                            </div>
-                            <Link
+                            </p>
+                            <AccentLink
                                 to="/case-studies"
-                                className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors"
+                                className="font-medium"
                             >
                                 Explore more <ArrowRight className="ml-2 h-4 w-4"/>
-                            </Link>
+                            </AccentLink>
                         </div>
 
                         {/* Icon Grid */}
@@ -126,7 +100,7 @@ const AIUseCases = () => {
                                     <Link to={`/case-studies/${useCase.id}`}>
                                         <Card
                                             className={`
-                                                h-full min-h-[140px] border border-border/50 bg-card/30 backdrop-blur-sm 
+                                                h-auto border border-border/50 bg-card/30 backdrop-blur-sm 
                                                 hover:bg-card/50 hover:border-border hover:shadow-lg
                                                 transition-all duration-500 ease-out cursor-pointer
                                                 bg-gradient-to-br ${useCase.color} ${useCase.hoverColor}
@@ -139,20 +113,20 @@ const AIUseCases = () => {
                                                 transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : '0ms'
                                             }}
                                         >
-                                            <div className="p-5 flex flex-col justify-between h-full">
+                                            <div className="p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
                                                 {/* Icon Box */}
                                                 <div
-                                                    className="w-10 h-10 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30 mb-4">
+                                                    className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
                                                     <Icon className="h-5 w-5 text-foreground/80"/>
                                                 </div>
 
                                                 {/* Title with inline arrow */}
                                                 <div className="flex items-center justify-between gap-2">
-                                                    <h3 className="text-sm font-semibold text-foreground leading-tight text-left">
+                                                    <h3 className="text-xs sm:text-sm font-semibold text-foreground leading-tight text-left">
                                                         {useCase.title}
                                                     </h3>
                                                     <ArrowRight
-                                                        className="h-4 w-4 flex-shrink-0 text-muted-foreground group-hover:text-primary transition-all duration-300 group-hover:translate-x-1"/>
+                                                        className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0 text-muted-foreground group-hover:text-primary transition-all duration-300 group-hover:translate-x-1"/>
                                                 </div>
                                             </div>
                                         </Card>
