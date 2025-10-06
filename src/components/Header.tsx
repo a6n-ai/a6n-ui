@@ -22,14 +22,14 @@ const Header = () => {
                     <img 
                         src={logo} 
                         alt="a6n logo" 
-                        className="h-8 w-8 font-bold transition-all duration-300"
+                        className="h-9 w-9 transition-all duration-300"
                         style={{
-                            filter: 'brightness(0) saturate(100%)',
+                            filter: 'brightness(0) saturate(100%) drop-shadow(0 0 0.5px black)',
                         }}
                     />
                     <style>{`
                         .group:hover img {
-                            filter: brightness(0) saturate(100%) invert(56%) sepia(91%) saturate(3684%) hue-rotate(181deg) brightness(94%) contrast(95%) !important;
+                            filter: brightness(0) saturate(100%) invert(56%) sepia(91%) saturate(3684%) hue-rotate(181deg) brightness(94%) contrast(95%) drop-shadow(0 0 0.5px currentColor) !important;
                         }
                     `}</style>
                     <span className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
