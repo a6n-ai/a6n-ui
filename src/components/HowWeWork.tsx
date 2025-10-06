@@ -1,150 +1,159 @@
-import {Headphones, Lightbulb, Link2, RefreshCw, Settings, Users} from "lucide-react";
+import {Headphones, Lightbulb, Link2, Settings, Users} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
 import {Card, CardContent} from "./ui/card";
 
 const HowWeWork = () => {
-    const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef<HTMLDivElement>(null);
+    const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+    const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                }
-            },
-            {threshold: 0.1}
-        );
+        const observers: IntersectionObserver[] = [];
 
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
+        cardRefs.current.forEach((ref, index) => {
+            if (ref) {
+                const observer = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            setVisibleCards(prev => new Set(prev).add(index));
+                            observer.unobserve(ref);
+                        }
+                    },
+                    {threshold: 0.1, rootMargin: "50px"}
+                );
 
-        return () => observer.disconnect();
+                observer.observe(ref);
+                observers.push(observer);
+            }
+        });
+
+        return () => {
+            observers.forEach(observer => observer.disconnect());
+        };
     }, []);
 
-    const mainSteps = [
+    const steps = [
         {
             icon: Users,
-            title: "Understand Your Needs",
-            description: "We start by listening to your team's challenges, analyzing workflows across sales, HR, healthcare, or other departments to pinpoint where automation can make the biggest impact.",
-            step: 1,
+            color: "from-purple-500/20 to-purple-600/20",
+            iconColor: "text-purple-600",
+            hoverColor: "hover:from-purple-500/30 hover:to-purple-600/30",
+            title: ["Understand", "Your Needs"],
+            description: "We start by listening to your team's challenges and pinpointing where automation can make the biggest impact.",
+            step: "01",
         },
         {
             icon: Settings,
-            title: "Custom AI Setup",
-            description: "Our experts tailor our AI platform to your specific tasks—whether it's logging calls, screening candidates, or managing patient intake—ensuring a seamless fit for your business.",
-            step: 2,
+            color: "from-blue-500/20 to-blue-600/20",
+            iconColor: "text-blue-600",
+            hoverColor: "hover:from-blue-500/30 hover:to-blue-600/30",
+            title: ["Custom AI", "Setup"],
+            description: "Our experts tailor our AI platform to your specific tasks, ensuring a seamless fit for your business.",
+            step: "02",
         },
         {
             icon: Link2,
-            title: "Seamless Integration",
-            description: "We connect a6n to your existing tools (like CRM or calendars) with minimal disruption, setting up automated processes that reduce manual effort by up to 50%.",
-            step: 3,
+            color: "from-emerald-500/20 to-emerald-600/20",
+            iconColor: "text-emerald-600",
+            hoverColor: "hover:from-emerald-500/30 hover:to-emerald-600/30",
+            title: ["Seamless", "Integration"],
+            description: "We connect a6n to your existing tools with minimal disruption, reducing manual effort by up to 50%.",
+            step: "03",
         },
-    ];
-
-    const continuousSupport = [
         {
             icon: Lightbulb,
-            title: "Train & Optimize",
-            description: "We guide your team with easy training and fine-tune the system based on real-time feedback, keeping it aligned with your evolving needs.",
+            color: "from-amber-500/20 to-amber-600/20",
+            iconColor: "text-amber-600",
+            hoverColor: "hover:from-amber-500/30 hover:to-amber-600/30",
+            title: ["Train &", "Optimize"],
+            description: "We guide your team with easy training and fine-tune the system based on real-time feedback.",
+            step: "04",
         },
         {
             icon: Headphones,
-            title: "Ongoing Support",
-            description: "Our team provides continuous assistance, ensuring your automation runs smoothly and helps you focus on growth every step of the way.",
+            color: "from-pink-500/20 to-pink-600/20",
+            iconColor: "text-pink-600",
+            hoverColor: "hover:from-pink-500/30 hover:to-pink-600/30",
+            title: ["Ongoing", "Support"],
+            description: "Our team provides continuous assistance, ensuring your automation runs smoothly.",
+            step: "05",
         },
     ];
 
     return (
-        <section ref={sectionRef} className="section-padding bg-section-primary">
+        <section className="py-20 md:py-24 lg:py-32 bg-section-secondary">
             <div className="container-width">
-                <div className="px-6 md:px-10">
-                    {/* Header */}
-                    <div
-                        className={`text-center max-w-4xl mx-auto mb-16 ${isVisible ? "animate-fade-in opacity-0" : ""}`}>
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                <div className="px-4 md:px-6 lg:px-8">
+                    {/* Section Header */}
+                    <div className="mb-12 md:mb-16 lg:mb-20 space-y-4 max-w-3xl">
+                        <h1 className="text-left">
                             How We Work
-                        </h2>
-                        <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                            At a6n, we simplify your journey to smarter automation with a clear, step-by-step process
-                            designed to save time and boost efficiency.
+                        </h1>
+                        <p className="text-left">
+                            At a6n, we simplify your journey to smarter automation with a clear, step-by-step process designed to save time and boost efficiency.
                         </p>
                     </div>
 
-                    {/* Main Process Flow */}
-                    <div className="max-w-5xl mx-auto mb-16">
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
-                            {mainSteps.map((step, index) => (
-                                <div key={step.title} className="relative">
-                                    <Card
-                                        className={`h-full border-2 hover:border-primary/50 transition-all duration-300 ${
-                                            isVisible ? "animate-fade-in opacity-0" : ""
-                                        }`}
-                                        style={{animationDelay: `${index * 0.15}s`}}
-                                    >
-                                        <CardContent className="p-6 space-y-4">
-                                            <div className="flex items-center justify-between mb-4">
-                                                <div
-                                                    className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
-                                                    <step.icon className="h-7 w-7 text-primary"/>
-                                                </div>
-                                                <span className="text-4xl font-bold text-primary/20">
-                                                    {step.step}
-                                                </span>
-                                            </div>
-                                            <h3 className="font-bold text-lg text-foreground">
-                                                {step.title}
-                                            </h3>
-                                            <p className="text-sm text-muted-foreground leading-relaxed">
-                                                {step.description}
-                                            </p>
-                                        </CardContent>
-                                    </Card>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Continuous Support Section */}
-                    <div className="max-w-5xl mx-auto">
-                        <div className="text-center mb-8">
+                    {/* Steps Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5 lg:gap-6">
+                        {steps.map((step, index) => (
                             <div
-                                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-semibold mb-4">
-                                <RefreshCw className="h-4 w-4"/>
-                                <span>Continuous Throughout Process</span>
-                            </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            {continuousSupport.map((item, index) => (
+                                key={index}
+                                ref={el => cardRefs.current[index] = el}
+                                className="group"
+                            >
                                 <Card
-                                    key={item.title}
-                                    className={`border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-primary/10 hover:border-primary/40 transition-all duration-300 ${
-                                        isVisible ? "animate-fade-in opacity-0" : ""
-                                    }`}
-                                    style={{animationDelay: `${0.45 + index * 0.15}s`}}
+                                    className={`
+                                        h-full border border-border/50 bg-card/30 backdrop-blur-sm 
+                                        hover:bg-card/50 hover:border-border hover:shadow-lg
+                                        transition-all duration-500 ease-out
+                                        ${visibleCards.has(index)
+                                            ? 'opacity-100 translate-y-0'
+                                            : 'opacity-0 translate-y-8'
+                                        }
+                                    `}
+                                    style={{
+                                        transitionDelay: visibleCards.has(index) ? `${index * 80}ms` : '0ms'
+                                    }}
                                 >
-                                    <CardContent className="p-6 space-y-4">
-                                        <div className="flex items-start gap-4">
-                                            <div
-                                                className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0">
-                                                <item.icon className="h-6 w-6 text-primary"/>
+                                    <CardContent className="p-5 md:p-6 lg:p-7">
+                                        <div className="flex flex-col h-full">
+                                            {/* Icon Container */}
+                                            <div className="relative mb-6 mx-auto">
+                                                <div className={`
+                                                    w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 
+                                                    rounded-2xl bg-gradient-to-br ${step.color} ${step.hoverColor}
+                                                    flex items-center justify-center
+                                                    transform transition-all duration-500 ease-out
+                                                    group-hover:scale-110 group-hover:rotate-3
+                                                `}>
+                                                    <step.icon className={`
+                                                        h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 
+                                                        ${step.iconColor}
+                                                        transition-all duration-300
+                                                        group-hover:scale-110
+                                                    `}/>
+                                                </div>
+                                                {/* Step Number */}
+                                                <div className="absolute -top-2 -right-2 w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+                                                    {step.step}
+                                                </div>
                                             </div>
-                                            <div className="space-y-2 flex-1">
-                                                <h3 className="font-bold text-lg text-foreground">
-                                                    {item.title}
+
+                                            {/* Content */}
+                                            <div className="flex-1 space-y-2">
+                                                <h3 className="text-base md:text-lg lg:text-xl font-semibold text-foreground leading-tight group-hover:text-primary transition-colors duration-300">
+                                                    <span className="block">{step.title[0]}</span>
+                                                    <span className="block">{step.title[1]}</span>
                                                 </h3>
-                                                <p className="text-sm text-muted-foreground leading-relaxed">
-                                                    {item.description}
+                                                <p className="text-xs md:text-sm lg:text-sm text-muted-foreground leading-relaxed pt-1">
+                                                    {step.description}
                                                 </p>
                                             </div>
                                         </div>
                                     </CardContent>
                                 </Card>
-                            ))}
-                        </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@ import {ArrowRight} from "lucide-react";
 
 const FinalCTA = () => {
     return (
-        <section className="section-padding bg-section-primary">
+        <section className="section-padding bg-section-secondary">
             <div className="container-width">
                 <div className="px-6 md:px-10">
                     <div className="max-w-3xl mx-auto text-center space-y-8">
