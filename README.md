@@ -1,6 +1,7 @@
 # a6n - AI Automation Platform
 
-Transform your business with custom AI solutions. Automate workflows and boost productivity with AI agents tailored to your needs.
+Transform your business with custom AI solutions. Automate workflows and boost productivity with AI agents tailored to
+your needs.
 
 **URL**: https://lovable.dev/projects/c5fe5b12-4670-4eaf-a113-439d4cad4a2c
 
@@ -74,6 +75,7 @@ src/
 ## 🎨 Design System
 
 The project uses a comprehensive design system with:
+
 - OKLCH color space for better color accuracy
 - Custom CSS variables for theming
 - Geist font for modern typography
@@ -93,6 +95,7 @@ The project uses a comprehensive design system with:
 ### Vite Config
 
 Production optimizations included:
+
 - Code splitting for vendors and UI libraries
 - Terser minification with console removal
 - CSS minification

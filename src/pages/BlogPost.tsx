@@ -137,14 +137,14 @@ const BlogPost = () => {
                     </span>
                                         <button
                                             onClick={() => handleShare('twitter')}
-                                            className="p-2 rounded-lg hover:bg-muted transition-colors"
+                                            className="p-2 rounded-full hover:bg-muted transition-colors"
                                             aria-label="Share on Twitter"
                                         >
                                             <Twitter className="h-4 w-4 text-muted-foreground hover:text-primary"/>
                                         </button>
                                         <button
                                             onClick={() => handleShare('linkedin')}
-                                            className="p-2 rounded-lg hover:bg-muted transition-colors"
+                                            className="p-2 rounded-full hover:bg-muted transition-colors"
                                             aria-label="Share on LinkedIn"
                                         >
                                             <Linkedin className="h-4 w-4 text-muted-foreground hover:text-primary"/>
