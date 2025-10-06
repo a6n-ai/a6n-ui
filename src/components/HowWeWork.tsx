@@ -1,4 +1,4 @@
-import {ArrowDown, ArrowRight, Headphones, Lightbulb, Link2, RefreshCw, Settings, Users} from "lucide-react";
+import {Headphones, Lightbulb, Link2, RefreshCw, Settings, Users} from "lucide-react";
 import {useEffect, useRef, useState} from "react";
 import {Card, CardContent} from "./ui/card";
 
@@ -102,20 +102,6 @@ const HowWeWork = () => {
                                             </p>
                                         </CardContent>
                                     </Card>
-
-                                    {/* Arrow connector - hidden on mobile, last one hidden */}
-                                    {index < mainSteps.length - 1 && (
-                                        <div className="hidden md:flex absolute top-1/2 -right-3 -translate-y-1/2 z-10">
-                                            <ArrowRight className="h-6 w-6 text-primary"/>
-                                        </div>
-                                    )}
-
-                                    {/* Arrow down on mobile */}
-                                    {index < mainSteps.length - 1 && (
-                                        <div className="flex md:hidden justify-center my-4">
-                                            <ArrowDown className="h-6 w-6 text-primary"/>
-                                        </div>
-                                    )}
                                 </div>
                             ))}
                         </div>
