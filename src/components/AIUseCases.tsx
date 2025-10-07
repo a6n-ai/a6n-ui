@@ -87,7 +87,7 @@ const AIUseCases = () => {
               ].map((item, index) => (
                 <div
                   key={index}
-                  className={`w-12 h-12 md:w-14 md:h-14 ${item.bgColor} rounded-xl flex items-center justify-center border border-border/50 transform transition-all duration-300 hover:scale-110 hover:-translate-y-1`}
+                  className={`w-12 h-12 md:w-14 md:h-14 ${item.bgColor} rounded-xl flex items-center justify-center border border-border/50 transform transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:bg-primary/10`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <item.Icon className="h-5 w-5 md:h-6 md:w-6 text-foreground/80" />

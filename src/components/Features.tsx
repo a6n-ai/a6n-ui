@@ -9,7 +9,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { FeatureCard } from "@/components/ui/feature-card";
+import { FeatureCard } from "./ui/feature-card";
 
 const Features = () => {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
@@ -43,7 +43,7 @@ const Features = () => {
   const features = [
     {
       icon: Server,
-      iconBgColor: "bg-purple-500/10",
+      bgColor: "bg-purple-500/10",
       iconColor: "text-purple-600",
       title: ["Private On-Premise", "Integration"],
       description:
@@ -51,7 +51,7 @@ const Features = () => {
     },
     {
       icon: Shield,
-      iconBgColor: "bg-emerald-500/10",
+      bgColor: "bg-emerald-500/10",
       iconColor: "text-emerald-600",
       title: ["Secure OAuth", "Integration"],
       description:
@@ -59,42 +59,42 @@ const Features = () => {
     },
     {
       icon: Lock,
-      iconBgColor: "bg-amber-500/10",
+      bgColor: "bg-amber-500/10",
       iconColor: "text-amber-600",
       title: ["RBAC", "Policies"],
       description: "Role-based access control with granular permissions.",
     },
     {
       icon: Sparkles,
-      iconBgColor: "bg-pink-500/10",
+      bgColor: "bg-pink-500/10",
       iconColor: "text-pink-600",
       title: ["Best AI Models", "to Choose From"],
       description: "Access cutting-edge models optimized for your use cases.",
     },
     {
       icon: Code,
-      iconBgColor: "bg-blue-500/10",
+      bgColor: "bg-blue-500/10",
       iconColor: "text-blue-600",
       title: ["RESTful", "APIs"],
       description: "Ready-to-use APIs for seamless integration.",
     },
     {
       icon: Mic,
-      iconBgColor: "bg-indigo-500/10",
+      bgColor: "bg-indigo-500/10",
       iconColor: "text-indigo-600",
       title: ["Voice and Chat", "Features"],
       description: "Multi-modal interactions with your AI agents.",
     },
     {
       icon: Boxes,
-      iconBgColor: "bg-slate-500/10",
+      bgColor: "bg-slate-500/10",
       iconColor: "text-slate-600",
       title: ["Open Source", "Tools"],
       description: "Built on trusted technologies for transparency.",
     },
     {
       icon: Cloud,
-      iconBgColor: "bg-cyan-500/10",
+      bgColor: "bg-cyan-500/10",
       iconColor: "text-cyan-600",
       title: ["Works on", "Any Cloud"],
       description: "Deploy on AWS, Azure, GCP without vendor lock-in.",
@@ -124,11 +124,11 @@ const Features = () => {
                 <FeatureCard
                   icon={feature.icon}
                   iconColor={feature.iconColor}
-                  iconBgColor={feature.iconBgColor}
+                  bgColor={feature.bgColor}
                   title={feature.title}
                   description={feature.description}
-                  delay={index * 80}
                   isVisible={visibleCards.has(index)}
+                  animationDelay={index * 80}
                 />
               </div>
             ))}

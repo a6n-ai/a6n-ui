@@ -1,29 +1,28 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { LucideIcon } from "lucide-react";
-import { ReactNode } from "react";
 
 interface FeatureCardProps {
   icon: LucideIcon;
   iconColor: string;
-  iconBgColor: string;
-  title: string | string[];
-  description: string;
-  badge?: ReactNode;
-  delay?: number;
+  bgColor: string;
+  title: string[] | string;
+  description?: string;
+  stepNumber?: string;
   isVisible?: boolean;
+  animationDelay?: number;
 }
 
 export const FeatureCard = ({
   icon: Icon,
   iconColor,
-  iconBgColor,
+  bgColor,
   title,
   description,
-  badge,
-  delay = 0,
+  stepNumber,
   isVisible = true,
+  animationDelay = 0,
 }: FeatureCardProps) => {
-  const titleLines = Array.isArray(title) ? title : [title];
+  const titleArray = Array.isArray(title) ? title : [title];
 
   return (
     <Card
@@ -34,7 +33,7 @@ export const FeatureCard = ({
         ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}
       `}
       style={{
-        transitionDelay: isVisible ? `${delay}ms` : "0ms",
+        transitionDelay: isVisible ? `${animationDelay}ms` : "0ms",
       }}
     >
       <CardContent className="p-5 md:p-6 lg:p-7">
@@ -44,10 +43,10 @@ export const FeatureCard = ({
             <div
               className={`
                 w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 
-                rounded-2xl ${iconBgColor}
+                rounded-2xl ${bgColor}
                 flex items-center justify-center
-                transform transition-all duration-500 ease-out
-                group-hover:scale-110 group-hover:rotate-3
+                transform transition-all duration-300 ease-out
+                group-hover:scale-105
               `}
             >
               <Icon
@@ -55,13 +54,13 @@ export const FeatureCard = ({
                   h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 
                   ${iconColor}
                   transition-all duration-300
-                  group-hover:scale-110
                 `}
               />
             </div>
-            {badge && (
-              <div className="absolute -top-2 -right-2">
-                {badge}
+            {/* Step Number */}
+            {stepNumber && (
+              <div className="absolute -top-2 -right-2 w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+                {stepNumber}
               </div>
             )}
           </div>
@@ -69,15 +68,17 @@ export const FeatureCard = ({
           {/* Content */}
           <div className="flex-1 space-y-2">
             <h3 className="text-base md:text-lg lg:text-xl font-semibold text-foreground leading-tight group-hover:text-primary transition-colors duration-300">
-              {titleLines.map((line, idx) => (
+              {titleArray.map((line, idx) => (
                 <span key={idx} className="block">
                   {line}
                 </span>
               ))}
             </h3>
-            <p className="text-xs md:text-sm lg:text-sm text-muted-foreground leading-relaxed pt-1">
-              {description}
-            </p>
+            {description && (
+              <p className="text-xs md:text-sm lg:text-sm text-muted-foreground leading-relaxed pt-1">
+                {description}
+              </p>
+            )}
           </div>
         </div>
       </CardContent>

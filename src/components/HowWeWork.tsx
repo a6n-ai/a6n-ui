@@ -34,7 +34,7 @@ const HowWeWork = () => {
   const steps = [
     {
       icon: Users,
-      iconBgColor: "bg-purple-500/10",
+      bgColor: "bg-purple-500/10",
       iconColor: "text-purple-600",
       title: ["Understand", "Your Needs"],
       description:
@@ -43,7 +43,7 @@ const HowWeWork = () => {
     },
     {
       icon: Settings,
-      iconBgColor: "bg-blue-500/10",
+      bgColor: "bg-blue-500/10",
       iconColor: "text-blue-600",
       title: ["Custom AI", "Setup"],
       description:
@@ -52,7 +52,7 @@ const HowWeWork = () => {
     },
     {
       icon: Link2,
-      iconBgColor: "bg-emerald-500/10",
+      bgColor: "bg-emerald-500/10",
       iconColor: "text-emerald-600",
       title: ["Seamless", "Integration"],
       description:
@@ -61,7 +61,7 @@ const HowWeWork = () => {
     },
     {
       icon: Lightbulb,
-      iconBgColor: "bg-amber-500/10",
+      bgColor: "bg-amber-500/10",
       iconColor: "text-amber-600",
       title: ["Train &", "Optimize"],
       description:
@@ -70,7 +70,7 @@ const HowWeWork = () => {
     },
     {
       icon: Headphones,
-      iconBgColor: "bg-pink-500/10",
+      bgColor: "bg-pink-500/10",
       iconColor: "text-pink-600",
       title: ["Ongoing", "Support"],
       description:
@@ -104,16 +104,12 @@ const HowWeWork = () => {
                 <FeatureCard
                   icon={step.icon}
                   iconColor={step.iconColor}
-                  iconBgColor={step.iconBgColor}
+                  bgColor={step.bgColor}
                   title={step.title}
                   description={step.description}
-                  badge={
-                    <div className="w-10 h-10 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
-                      {step.step}
-                    </div>
-                  }
-                  delay={index * 80}
+                  stepNumber={step.step}
                   isVisible={visibleCards.has(index)}
+                  animationDelay={index * 80}
                 />
               </div>
             ))}
