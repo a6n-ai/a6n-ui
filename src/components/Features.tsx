@@ -1,4 +1,3 @@
-import { Card, CardContent } from "@/components/ui/card";
 import {
   Cloud,
   Code,
@@ -10,6 +9,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { FeatureCard } from "@/components/ui/feature-card";
 
 const Features = () => {
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
@@ -43,67 +43,59 @@ const Features = () => {
   const features = [
     {
       icon: Server,
-      color: "from-purple-500/20 to-purple-600/20",
+      iconBgColor: "bg-purple-500/10",
       iconColor: "text-purple-600",
-      hoverColor: "hover:from-purple-500/30 hover:to-purple-600/30",
       title: ["Private On-Premise", "Integration"],
       description:
         "Deploy AI agents within your infrastructure with complete data control.",
     },
     {
       icon: Shield,
-      color: "from-emerald-500/20 to-emerald-600/20",
+      iconBgColor: "bg-emerald-500/10",
       iconColor: "text-emerald-600",
-      hoverColor: "hover:from-emerald-500/30 hover:to-emerald-600/30",
       title: ["Secure OAuth", "Integration"],
       description:
         "Connect with your provider or available providers securely.",
     },
     {
       icon: Lock,
-      color: "from-amber-500/20 to-amber-600/20",
+      iconBgColor: "bg-amber-500/10",
       iconColor: "text-amber-600",
-      hoverColor: "hover:from-amber-500/30 hover:to-amber-600/30",
       title: ["RBAC", "Policies"],
       description: "Role-based access control with granular permissions.",
     },
     {
       icon: Sparkles,
-      color: "from-pink-500/20 to-pink-600/20",
+      iconBgColor: "bg-pink-500/10",
       iconColor: "text-pink-600",
-      hoverColor: "hover:from-pink-500/30 hover:to-pink-600/30",
       title: ["Best AI Models", "to Choose From"],
       description: "Access cutting-edge models optimized for your use cases.",
     },
     {
       icon: Code,
-      color: "from-blue-500/20 to-blue-600/20",
+      iconBgColor: "bg-blue-500/10",
       iconColor: "text-blue-600",
-      hoverColor: "hover:from-blue-500/30 hover:to-blue-600/30",
       title: ["RESTful", "APIs"],
       description: "Ready-to-use APIs for seamless integration.",
     },
     {
       icon: Mic,
-      color: "from-indigo-500/20 to-indigo-600/20",
+      iconBgColor: "bg-indigo-500/10",
       iconColor: "text-indigo-600",
-      hoverColor: "hover:from-indigo-500/30 hover:to-indigo-600/30",
       title: ["Voice and Chat", "Features"],
       description: "Multi-modal interactions with your AI agents.",
     },
     {
       icon: Boxes,
-      color: "from-slate-500/20 to-slate-600/20",
+      iconBgColor: "bg-slate-500/10",
       iconColor: "text-slate-600",
-      hoverColor: "hover:from-slate-500/30 hover:to-slate-600/30",
       title: ["Open Source", "Tools"],
       description: "Built on trusted technologies for transparency.",
     },
     {
       icon: Cloud,
-      color: "from-cyan-500/20 to-cyan-600/20",
+      iconBgColor: "bg-cyan-500/10",
       iconColor: "text-cyan-600",
-      hoverColor: "hover:from-cyan-500/30 hover:to-cyan-600/30",
       title: ["Works on", "Any Cloud"],
       description: "Deploy on AWS, Azure, GCP without vendor lock-in.",
     },
@@ -129,60 +121,15 @@ const Features = () => {
                 ref={(el) => (cardRefs.current[index] = el)}
                 className="group"
               >
-                <Card
-                  className={`
-                    h-full border border-border/50 bg-card/30 backdrop-blur-sm 
-                    hover:bg-card/50 hover:border-border hover:shadow-lg
-                    transition-all duration-500 ease-out
-                    ${
-                      visibleCards.has(index)
-                        ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-8"
-                    }
-                  `}
-                  style={{
-                    transitionDelay: visibleCards.has(index)
-                      ? `${index * 80}ms`
-                      : "0ms",
-                  }}
-                >
-                  <CardContent className="p-5 md:p-6 lg:p-7">
-                    <div className="flex flex-col h-full">
-                      {/* Icon Container */}
-                      <div className="relative mb-6 mx-auto">
-                        <div
-                          className={`
-                          w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 
-                          rounded-2xl bg-gradient-to-br ${feature.color} ${feature.hoverColor}
-                          flex items-center justify-center
-                          transform transition-all duration-500 ease-out
-                          group-hover:scale-110 group-hover:rotate-3
-                        `}
-                        >
-                          <feature.icon
-                            className={`
-                            h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 
-                            ${feature.iconColor}
-                            transition-all duration-300
-                            group-hover:scale-110
-                          `}
-                          />
-                        </div>
-                      </div>
-
-                      {/* Content */}
-                      <div className="flex-1 space-y-2">
-                        <h3 className="text-base md:text-lg lg:text-xl font-semibold text-foreground leading-tight group-hover:text-primary transition-colors duration-300">
-                          <span className="block">{feature.title[0]}</span>
-                          <span className="block">{feature.title[1]}</span>
-                        </h3>
-                        <p className="text-xs md:text-sm lg:text-sm text-muted-foreground leading-relaxed pt-1">
-                          {feature.description}
-                        </p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
+                <FeatureCard
+                  icon={feature.icon}
+                  iconColor={feature.iconColor}
+                  iconBgColor={feature.iconBgColor}
+                  title={feature.title}
+                  description={feature.description}
+                  delay={index * 80}
+                  isVisible={visibleCards.has(index)}
+                />
               </div>
             ))}
           </div>
