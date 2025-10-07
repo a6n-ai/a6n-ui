@@ -76,24 +76,18 @@ const AIUseCases = () => {
             {/* Icon Grid */}
             <div className="flex justify-start lg:justify-end items-center gap-2 lg:flex-shrink-0 flex-wrap lg:flex-nowrap">
               {[
-                { Icon: Users, color: "from-purple-500/20 to-purple-600/20" },
-                { Icon: TrendingUp, color: "from-pink-500/20 to-pink-600/20" },
-                {
-                  Icon: Target,
-                  color: "from-emerald-500/20 to-emerald-600/20",
-                },
-                { Icon: BarChart3, color: "from-blue-500/20 to-blue-600/20" },
-                { Icon: Code2, color: "from-indigo-500/20 to-indigo-600/20" },
-                { Icon: Wallet, color: "from-amber-500/20 to-amber-600/20" },
-                { Icon: Settings2, color: "from-cyan-500/20 to-cyan-600/20" },
-                {
-                  Icon: MessageCircle,
-                  color: "from-rose-500/20 to-rose-600/20",
-                },
+                { Icon: Users, bgColor: "bg-purple-500/10" },
+                { Icon: TrendingUp, bgColor: "bg-pink-500/10" },
+                { Icon: Target, bgColor: "bg-emerald-500/10" },
+                { Icon: BarChart3, bgColor: "bg-blue-500/10" },
+                { Icon: Code2, bgColor: "bg-indigo-500/10" },
+                { Icon: Wallet, bgColor: "bg-amber-500/10" },
+                { Icon: Settings2, bgColor: "bg-cyan-500/10" },
+                { Icon: MessageCircle, bgColor: "bg-rose-500/10" },
               ].map((item, index) => (
                 <div
                   key={index}
-                  className={`w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center border border-border/50 transform transition-all duration-300 hover:scale-110 hover:-translate-y-1`}
+                  className={`w-12 h-12 md:w-14 md:h-14 ${item.bgColor} rounded-xl flex items-center justify-center border border-border/50 transform transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:bg-primary/10`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                   <item.Icon className="h-5 w-5 md:h-6 md:w-6 text-foreground/80" />
@@ -118,7 +112,6 @@ const AIUseCases = () => {
                                                 h-auto border border-border/50 bg-card/30 backdrop-blur-sm 
                                                 hover:bg-card/50 hover:border-border hover:shadow-lg
                                                 transition-all duration-500 ease-out cursor-pointer
-                                                bg-gradient-to-br ${useCase.color} ${useCase.hoverColor}
                                                 ${
                                                   visibleCards.has(index)
                                                     ? "opacity-100 translate-y-0"
