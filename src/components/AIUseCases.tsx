@@ -1,153 +1,101 @@
-import { Card } from "@/components/ui/card";
-import {
-  ArrowRight,
-  BarChart3,
-  Code2,
-  MessageCircle,
-  Settings2,
-  Target,
-  TrendingUp,
-  Users,
-  Wallet,
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import AccentLink from "@/components/ui/accent-link";
 import { caseStudies } from "@/data/caseStudies";
 import DepartmentsRotatingText from "./text/departments-rotating-text";
+import { SpotlightCard } from "./ui/spotlight-card";
+
+// Map case study color gradients to SpotlightCard-compatible colors
+const colorMap: Record<string, { bgColor: string; iconColor: string; spotlightColor: string }> = {
+  "from-purple-500/20 to-purple-600/20": {
+    bgColor: "bg-purple-500/10",
+    iconColor: "text-purple-600",
+    spotlightColor: "bg-purple-600/40 dark:bg-purple-400/40",
+  },
+  "from-pink-500/20 to-pink-600/20": {
+    bgColor: "bg-pink-500/10",
+    iconColor: "text-pink-600",
+    spotlightColor: "bg-pink-600/40 dark:bg-pink-400/40",
+  },
+  "from-emerald-500/20 to-emerald-600/20": {
+    bgColor: "bg-emerald-500/10",
+    iconColor: "text-emerald-600",
+    spotlightColor: "bg-emerald-600/40 dark:bg-emerald-400/40",
+  },
+  "from-blue-500/20 to-blue-600/20": {
+    bgColor: "bg-blue-500/10",
+    iconColor: "text-blue-600",
+    spotlightColor: "bg-blue-600/40 dark:bg-blue-400/40",
+  },
+  "from-indigo-500/20 to-indigo-600/20": {
+    bgColor: "bg-indigo-500/10",
+    iconColor: "text-indigo-600",
+    spotlightColor: "bg-indigo-600/40 dark:bg-indigo-400/40",
+  },
+  "from-amber-500/20 to-amber-600/20": {
+    bgColor: "bg-amber-500/10",
+    iconColor: "text-amber-600",
+    spotlightColor: "bg-amber-600/40 dark:bg-amber-400/40",
+  },
+  "from-cyan-500/20 to-cyan-600/20": {
+    bgColor: "bg-cyan-500/10",
+    iconColor: "text-cyan-600",
+    spotlightColor: "bg-cyan-600/40 dark:bg-cyan-400/40",
+  },
+  "from-rose-500/20 to-rose-600/20": {
+    bgColor: "bg-rose-500/10",
+    iconColor: "text-rose-600",
+    spotlightColor: "bg-rose-600/40 dark:bg-rose-400/40",
+  },
+};
 
 const AIUseCases = () => {
-  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  // Intersection observer for card animations
-  useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    cardRefs.current.forEach((ref, index) => {
-      if (ref) {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              setVisibleCards((prev) => new Set(prev).add(index));
-              observer.unobserve(ref);
-            }
-          },
-          { threshold: 0.1, rootMargin: "50px" },
-        );
-
-        observer.observe(ref);
-        observers.push(observer);
-      }
-    });
-
-    return () => {
-      observers.forEach((observer) => observer.disconnect());
-    };
-  }, []);
-
   return (
     <section className="py-20 md:py-24 lg:py-32 bg-section-primary">
       <div className="container-width">
         <div className="px-4 md:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="mb-6 md:mb-8 lg:mb-10 space-y-6 flex flex-col lg:flex-row lg:justify-between lg:items-start gap-8">
-            <div className="mb-6 md:mb-6 lg:mb-6 space-y-4 max-w-3xl">
-              <h1 className="text-left">
-                Let a6n AI handle
-                <br />
-                the busywork.
-              </h1>
-              <p>
-                Pick a use case to see how a6n AI helps your{" "}
-                <DepartmentsRotatingText
-                  duration={3000}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                  className="text-primary font-semibold inline-block align-baseline"
-                  containerClassName="inline-block align-baseline py-0 overflow-visible"
-                />{" "}
-                team.
-              </p>
-              <AccentLink to="/case-studies" className="font-medium">
-                Explore more <ArrowRight className="ml-2 h-4 w-4" />
-              </AccentLink>
-            </div>
-
-            {/* Icon Grid */}
-            <div className="flex justify-start lg:justify-end items-center gap-2 lg:flex-shrink-0 flex-wrap lg:flex-nowrap">
-              {[
-                { Icon: Users, color: "from-purple-500/20 to-purple-600/20" },
-                { Icon: TrendingUp, color: "from-pink-500/20 to-pink-600/20" },
-                {
-                  Icon: Target,
-                  color: "from-emerald-500/20 to-emerald-600/20",
-                },
-                { Icon: BarChart3, color: "from-blue-500/20 to-blue-600/20" },
-                { Icon: Code2, color: "from-indigo-500/20 to-indigo-600/20" },
-                { Icon: Wallet, color: "from-amber-500/20 to-amber-600/20" },
-                { Icon: Settings2, color: "from-cyan-500/20 to-cyan-600/20" },
-                {
-                  Icon: MessageCircle,
-                  color: "from-rose-500/20 to-rose-600/20",
-                },
-              ].map((item, index) => (
-                <div
-                  key={index}
-                  className={`w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center border border-border/50 transform transition-all duration-300 hover:scale-110 hover:-translate-y-1`}
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <item.Icon className="h-5 w-5 md:h-6 md:w-6 text-foreground/80" />
-                </div>
-              ))}
-            </div>
+          {/* Section Header - matching other sections */}
+          <div className="mb-12 md:mb-16 lg:mb-20 space-y-4 max-w-3xl">
+            <h1 className="text-left">
+              Let a6n AI handle
+              <br />
+              the busywork.
+            </h1>
+            <p className="text-left">
+              Pick a use case to see how a6n AI helps your{" "}
+              <DepartmentsRotatingText
+                duration={3000}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="text-primary font-semibold inline-block align-baseline"
+                containerClassName="inline-block align-baseline py-0 overflow-visible"
+              />{" "}
+              team.
+            </p>
+            <AccentLink to="/case-studies" className="font-medium">
+              Explore more <ArrowRight className="ml-2 h-4 w-4" />
+            </AccentLink>
           </div>
 
-          {/* Use Cases Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
-            {caseStudies.slice(0, 8).map((useCase, index) => {
-              const Icon = useCase.icon;
+          {/* Use Cases Grid - matching Features section layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+            {caseStudies.slice(0, 8).map((useCase) => {
+              const colors = colorMap[useCase.color] || {
+                bgColor: "bg-slate-500/10",
+                iconColor: "text-slate-600",
+                spotlightColor: "bg-slate-600/40 dark:bg-slate-400/40",
+              };
               return (
-                <div
-                  key={useCase.id}
-                  ref={(el) => (cardRefs.current[index] = el)}
-                  className="group"
-                >
-                  <Link to={`/case-studies/${useCase.id}`}>
-                    <Card
-                      className={`
-                                                h-auto border border-border/50 bg-card/30 backdrop-blur-sm 
-                                                hover:bg-card/50 hover:border-border hover:shadow-lg
-                                                transition-all duration-500 ease-out cursor-pointer
-                                                bg-gradient-to-br ${useCase.color} ${useCase.hoverColor}
-                                                ${
-                                                  visibleCards.has(index)
-                                                    ? "opacity-100 translate-y-0"
-                                                    : "opacity-0 translate-y-8"
-                                                }
-                                            `}
-                      style={{
-                        transitionDelay: visibleCards.has(index)
-                          ? `${index * 80}ms`
-                          : "0ms",
-                      }}
-                    >
-                      <div className="p-3 sm:p-4 flex flex-col gap-2 sm:gap-3">
-                        {/* Icon Box */}
-                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-background/50 backdrop-blur-sm flex items-center justify-center border border-border/30">
-                          <Icon className="h-5 w-5 text-foreground/80" />
-                        </div>
-
-                        {/* Title with inline arrow */}
-                        <div className="flex items-center justify-between gap-2">
-                          <h3 className="text-xs sm:text-sm font-semibold text-foreground leading-tight text-left">
-                            {useCase.title}
-                          </h3>
-                          <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0 text-muted-foreground group-hover:text-primary transition-all duration-300 group-hover:translate-x-1" />
-                        </div>
-                      </div>
-                    </Card>
-                  </Link>
-                </div>
+                <Link key={useCase.id} to={`/case-studies/${useCase.id}`} className="no-underline">
+                  <SpotlightCard
+                    icon={useCase.icon}
+                    title={useCase.title}
+                    description={useCase.description}
+                    bgColor={colors.bgColor}
+                    iconColor={colors.iconColor}
+                    spotlightColor={colors.spotlightColor}
+                  />
+                </Link>
               );
             })}
           </div>

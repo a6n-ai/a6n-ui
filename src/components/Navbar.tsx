@@ -165,7 +165,7 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
         )}
         {...props}
       >
-        <div className="container mx-auto flex h-16 max-w-screen-2xl items-center justify-between gap-4 px-6 md:px-8 lg:px-12">
+        <div className="container-width flex h-16 items-center justify-between gap-4 px-4 md:px-6 lg:px-8">
           {/* Left side */}
           <div className="flex items-center gap-2">
             {/* Mobile menu trigger */}
