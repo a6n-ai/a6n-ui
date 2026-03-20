@@ -122,13 +122,14 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
     ref
   ) => {
     const [isMobile, setIsMobile] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
     const containerRef = useRef<HTMLElement>(null);
 
     useEffect(() => {
       const checkWidth = () => {
         if (containerRef.current) {
           const width = containerRef.current.offsetWidth;
-          setIsMobile(width < 768); // 768px is md breakpoint
+          setIsMobile(width < 768);
         }
       };
 
@@ -141,6 +142,15 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
       return () => {
         resizeObserver.disconnect();
       };
+    }, []);
+
+    useEffect(() => {
+      const handleScroll = () => {
+        setScrolled(window.scrollY > 20);
+      };
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      handleScroll();
+      return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
     // Combine refs
@@ -160,7 +170,10 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
       <header
         ref={combinedRef}
         className={cn(
-          "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 [&_*]:no-underline",
+          "fixed top-0 left-0 right-0 z-50 transition-all duration-300 [&_*]:no-underline",
+          scrolled
+            ? "top-3 mx-4 md:mx-6 lg:mx-8 rounded-full border border-border/40 bg-background/80 backdrop-blur-xl shadow-lg"
+            : "bg-transparent",
           className
         )}
         {...props}
