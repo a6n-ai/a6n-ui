@@ -171,106 +171,113 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
         ref={combinedRef}
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 [&_*]:no-underline",
-          scrolled
-            ? "top-3 mx-4 md:mx-6 lg:mx-8 rounded-full border border-border/40 bg-background/80 backdrop-blur-xl shadow-lg"
-            : "bg-transparent",
+          scrolled ? "top-3" : "",
           className
         )}
         {...props}
       >
-        <div className="container-width flex h-16 items-center justify-between gap-4 px-4 md:px-6 lg:px-8">
-          {/* Left - Logo */}
-          <div className="flex items-center gap-2">
-            {isMobile && (
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    className="rounded-full group h-9 w-9 hover:bg-accent hover:text-accent-foreground"
-                    variant="ghost"
-                    size="icon"
-                  >
-                    <HamburgerIcon />
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent align="start" className="w-48 p-2">
-                  <NavigationMenu className="max-w-none">
-                    <NavigationMenuList className="flex-col items-start gap-1">
-                      {navigationLinks.map((link, index) => (
-                        <NavigationMenuItem key={index} className="w-full">
-                          <Link
-                            to={link.href}
-                            className={cn(
-                              "flex w-full items-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground no-underline",
-                              link.active
-                                ? "bg-accent text-accent-foreground"
-                                : "text-foreground/80"
-                            )}
-                          >
-                            {link.label}
-                          </Link>
-                        </NavigationMenuItem>
-                      ))}
-                    </NavigationMenuList>
-                  </NavigationMenu>
-                </PopoverContent>
-              </Popover>
-            )}
-            <Link
-              to={logoHref}
-              className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors"
-            >
-              <div className="text-2xl">{logo}</div>
-            </Link>
-          </div>
-
-          {/* Center - Navigation links */}
-          {!isMobile && (
-            <NavigationMenu className="absolute left-1/2 -translate-x-1/2">
-              <NavigationMenuList className="gap-1">
-                {navigationLinks.map((link, index) => (
-                  <NavigationMenuItem key={index}>
-                    <Link
-                      to={link.href}
-                      className={cn(
-                        "group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 no-underline",
-                        link.active
-                          ? "bg-accent text-accent-foreground"
-                          : "text-foreground/80 hover:text-foreground"
-                      )}
-                    >
-                      {link.label}
-                    </Link>
-                  </NavigationMenuItem>
-                ))}
-              </NavigationMenuList>
-            </NavigationMenu>
+        <div
+          className={cn(
+            "container-width mx-auto transition-all duration-300 px-4 md:px-6 lg:px-8",
+            scrolled
+              ? "rounded-full border border-border/40 bg-background/80 backdrop-blur-xl shadow-lg"
+              : "bg-transparent"
           )}
+        >
+          <div className="flex h-16 items-center justify-between gap-4">
+            {/* Left - Logo */}
+            <div className="flex items-center gap-2">
+              {isMobile && (
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <Button
+                      className="rounded-full group h-9 w-9 hover:bg-accent hover:text-accent-foreground"
+                      variant="ghost"
+                      size="icon"
+                    >
+                      <HamburgerIcon />
+                    </Button>
+                  </PopoverTrigger>
+                  <PopoverContent align="start" className="w-48 p-2">
+                    <NavigationMenu className="max-w-none">
+                      <NavigationMenuList className="flex-col items-start gap-1">
+                        {navigationLinks.map((link, index) => (
+                          <NavigationMenuItem key={index} className="w-full">
+                            <Link
+                              to={link.href}
+                              className={cn(
+                                "flex w-full items-center rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground no-underline",
+                                link.active
+                                  ? "bg-accent text-accent-foreground"
+                                  : "text-foreground/80"
+                              )}
+                            >
+                              {link.label}
+                            </Link>
+                          </NavigationMenuItem>
+                        ))}
+                      </NavigationMenuList>
+                    </NavigationMenu>
+                  </PopoverContent>
+                </Popover>
+              )}
+              <Link
+                to={logoHref}
+                className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors"
+              >
+                <div className="text-2xl">{logo}</div>
+              </Link>
+            </div>
 
-          {/* Right side */}
-          <div className="flex items-center gap-2">
-            <Button
-              asChild
-              variant="ghost"
-              size="sm"
-              className="rounded-full"
-              onClick={onSignInClick}
-            >
-              <Link to={signInHref}>
-                {signInText}
-                <span className="sr-only">Sign In</span>
-              </Link>
-            </Button>
-            <Button
-              asChild
-              size="sm"
-              className="rounded-full"
-              onClick={onCtaClick}
-            >
-              <Link to={ctaHref}>
-                {ctaText}
-                <span className="sr-only">Get Started</span>
-              </Link>
-            </Button>
+            {/* Center - Navigation links */}
+            {!isMobile && (
+              <NavigationMenu className="absolute left-1/2 -translate-x-1/2">
+                <NavigationMenuList className="gap-1">
+                  {navigationLinks.map((link, index) => (
+                    <NavigationMenuItem key={index}>
+                      <Link
+                        to={link.href}
+                        className={cn(
+                          "group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 no-underline",
+                          link.active
+                            ? "bg-accent text-accent-foreground"
+                            : "text-foreground/80 hover:text-foreground"
+                        )}
+                      >
+                        {link.label}
+                      </Link>
+                    </NavigationMenuItem>
+                  ))}
+                </NavigationMenuList>
+              </NavigationMenu>
+            )}
+
+            {/* Right side */}
+            <div className="flex items-center gap-2">
+              <Button
+                asChild
+                variant="ghost"
+                size="sm"
+                className="rounded-full"
+                onClick={onSignInClick}
+              >
+                <Link to={signInHref}>
+                  {signInText}
+                  <span className="sr-only">Sign In</span>
+                </Link>
+              </Button>
+              <Button
+                asChild
+                size="sm"
+                className="rounded-full"
+                onClick={onCtaClick}
+              >
+                <Link to={ctaHref}>
+                  {ctaText}
+                  <span className="sr-only">Get Started</span>
+                </Link>
+              </Button>
+            </div>
           </div>
         </div>
       </header>
