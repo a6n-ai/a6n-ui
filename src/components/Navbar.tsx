@@ -179,9 +179,8 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
         {...props}
       >
         <div className="container-width flex h-16 items-center justify-between gap-4 px-4 md:px-6 lg:px-8">
-          {/* Left side */}
+          {/* Left - Logo */}
           <div className="flex items-center gap-2">
-            {/* Mobile menu trigger */}
             {isMobile && (
               <Popover>
                 <PopoverTrigger asChild>
@@ -216,40 +215,36 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
                 </PopoverContent>
               </Popover>
             )}
-
-            {/* Main nav */}
-            <div className="flex items-center gap-6">
-              <Link
-                to={logoHref}
-                className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors"
-              >
-                <div className="text-2xl">{logo}</div>
-              </Link>
-
-              {/* Navigation menu */}
-              {!isMobile && (
-                <NavigationMenu className="flex">
-                  <NavigationMenuList className="gap-1">
-                    {navigationLinks.map((link, index) => (
-                      <NavigationMenuItem key={index}>
-                        <Link
-                          to={link.href}
-                          className={cn(
-                            "group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 no-underline",
-                            link.active
-                              ? "bg-accent text-accent-foreground"
-                              : "text-foreground/80 hover:text-foreground"
-                          )}
-                        >
-                          {link.label}
-                        </Link>
-                      </NavigationMenuItem>
-                    ))}
-                  </NavigationMenuList>
-                </NavigationMenu>
-              )}
-            </div>
+            <Link
+              to={logoHref}
+              className="flex items-center space-x-2 text-primary hover:text-primary/90 transition-colors"
+            >
+              <div className="text-2xl">{logo}</div>
+            </Link>
           </div>
+
+          {/* Center - Navigation links */}
+          {!isMobile && (
+            <NavigationMenu className="absolute left-1/2 -translate-x-1/2">
+              <NavigationMenuList className="gap-1">
+                {navigationLinks.map((link, index) => (
+                  <NavigationMenuItem key={index}>
+                    <Link
+                      to={link.href}
+                      className={cn(
+                        "group inline-flex h-9 w-max items-center justify-center rounded-full px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 no-underline",
+                        link.active
+                          ? "bg-accent text-accent-foreground"
+                          : "text-foreground/80 hover:text-foreground"
+                      )}
+                    >
+                      {link.label}
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
+          )}
 
           {/* Right side */}
           <div className="flex items-center gap-2">
