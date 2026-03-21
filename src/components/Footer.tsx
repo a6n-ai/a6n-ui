@@ -33,7 +33,7 @@ const Footer = () => {
                                     filter: brightness(0) saturate(100%) invert(56%) sepia(91%) saturate(3684%) hue-rotate(181deg) brightness(94%) contrast(95%) !important;
                                 }
                             `}</style>
-              <h2 className="text-6xl md:text-7xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+              <h2 className="text-6xl md:text-7xl font-bold text-white group-hover:text-primary transition-colors duration-300">
                 a6n
               </h2>
             </Link>
