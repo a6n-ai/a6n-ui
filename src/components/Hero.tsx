@@ -170,7 +170,7 @@ const Hero = () => {
                 />
               </h2>
 
-              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in opacity-0 stagger-4">
+              <p className="text-base md:text-lg text-white/60 max-w-2xl mx-auto animate-fade-in opacity-0 stagger-4">
                 The AI automation platform where teams and agents achieve more
                 together.
               </p>
