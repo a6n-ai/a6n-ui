@@ -36,7 +36,7 @@ const Vision = () => {
           <div className="space-y-8">
             {/* Title */}
             <h2
-              className={`text-3xl md:text-4xl font-bold text-foreground text-left ${
+              className={`text-3xl md:text-4xl font-bold text-left ${
                 isVisible ? "animate-fade-in opacity-0" : ""
               }`}
             >
@@ -45,7 +45,7 @@ const Vision = () => {
 
             {/* Subtext */}
             <p
-              className={`text-base md:text-lg text-muted-foreground italic leading-relaxed text-left ${
+              className={`text-base md:text-lg text-white/50 italic leading-relaxed text-left ${
                 isVisible ? "animate-fade-in opacity-0 stagger-1" : ""
               }`}
             >
