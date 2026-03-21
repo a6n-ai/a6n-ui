@@ -80,7 +80,7 @@ const BlogPreview = () => {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-sm text-muted-foreground line-clamp-3 mb-4">
+                    <CardDescription className="text-sm text-white/50 line-clamp-3 mb-4">
                       {post.excerpt}
                     </CardDescription>
                     <div className="flex flex-wrap gap-2">
