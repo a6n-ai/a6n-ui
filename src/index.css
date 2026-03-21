@@ -265,6 +265,22 @@
   .bg-section-tertiary {
     background-color: var(--section-bg-tertiary);
   }
+
+  /* Dark section utilities */
+  .bg-section-dark {
+    background-color: var(--section-bg-dark);
+    color: var(--section-dark-foreground);
+  }
+
+  .bg-section-dark-alt {
+    background-color: var(--section-bg-dark-alt);
+    color: var(--section-dark-foreground);
+  }
+
+  .bg-section-dark-gradient {
+    background: linear-gradient(135deg, var(--section-bg-dark) 0%, var(--section-bg-dark-alt) 50%, oklch(0.18 0.04 270) 100%);
+    color: var(--section-dark-foreground);
+  }
 }
 
 /* --- Start OKLCH Theme --- */
