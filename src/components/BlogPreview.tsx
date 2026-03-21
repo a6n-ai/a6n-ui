@@ -62,7 +62,7 @@ const BlogPreview = () => {
             {latestPosts.map((post, index) => (
               <Link key={post.slug} to={`/blog/${post.slug}`} className="group">
                 <Card
-                  className={`h-full notion-card hover:border-primary/30 transition-all duration-base ${
+                  className={`h-full notion-card bg-white/5 border-white/10 hover:border-primary/40 transition-all duration-base ${
                     isVisible ? "animate-fade-in-up opacity-0" : ""
                   }`}
                   style={{ animationDelay: `${index * 0.2}s` }}
