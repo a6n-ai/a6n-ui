@@ -75,7 +75,7 @@ const BlogPreview = () => {
                       </div>
                       <ArrowUpRight className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
-                    <CardTitle className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                    <CardTitle className="text-lg font-semibold text-white group-hover:text-primary transition-colors line-clamp-2">
                       {post.title}
                     </CardTitle>
                   </CardHeader>
