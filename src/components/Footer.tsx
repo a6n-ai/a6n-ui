@@ -25,7 +25,7 @@ const Footer = () => {
                 alt="a6n logo"
                 className="h-16 w-16 transition-all duration-300"
                 style={{
-                  filter: "brightness(0) saturate(100%)",
+                  filter: "brightness(0) saturate(100%) invert(1)",
                 }}
               />
               <style>{`
