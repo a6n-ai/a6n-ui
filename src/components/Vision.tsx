@@ -66,7 +66,7 @@ const Vision = () => {
                     className={`px-6 py-2 text-sm font-medium ${
                       item.status === "current"
                         ? "bg-primary text-primary-foreground border-primary"
-                        : "border-muted-foreground/30 text-muted-foreground"
+                        : "border-white/20 text-white/60"
                     }`}
                   >
                     {item.label}
