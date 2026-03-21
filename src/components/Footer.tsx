@@ -83,8 +83,8 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="pt-8 border-t">
-            <p className="text-sm text-muted-foreground text-center">
+          <div className="pt-8 border-t border-white/10">
+            <p className="text-sm text-white/40 text-center">
               © 2025 a6n. Automation that empowers teams.
             </p>
           </div>
