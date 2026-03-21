@@ -37,7 +37,7 @@ const Footer = () => {
                 a6n
               </h2>
             </Link>
-            <p className="text-lg text-muted-foreground mt-4">
+            <p className="text-lg text-white/50 mt-4">
               Work smarter with your AI crew.
             </p>
           </div>

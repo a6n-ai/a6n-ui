@@ -30,7 +30,7 @@ const Vision = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-section-primary">
+    <section ref={sectionRef} className="section-padding bg-section-dark-alt">
       <div className="container-width">
         <div className="px-6 md:px-10">
           <div className="space-y-8">

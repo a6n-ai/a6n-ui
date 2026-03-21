@@ -3,12 +3,12 @@ import { ArrowRight } from "lucide-react";
 
 const FinalCTA = () => {
   return (
-    <section className="section-padding bg-section-secondary">
+    <section className="section-padding bg-section-dark">
       <div className="container-width">
         <div className="px-6 md:px-10">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             {/* Heading */}
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground animate-fade-in">
+            <h2 className="text-3xl md:text-4xl font-bold animate-fade-in">
               Ready to transform your workflows?
             </h2>
 
