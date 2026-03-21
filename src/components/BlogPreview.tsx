@@ -69,7 +69,7 @@ const BlogPreview = () => {
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center text-xs text-muted-foreground">
+                      <div className="flex items-center text-xs text-white/40">
                         <Calendar className="h-3 w-3 mr-1" />
                         {post.date}
                       </div>
