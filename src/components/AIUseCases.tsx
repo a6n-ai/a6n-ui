@@ -52,7 +52,7 @@ const colorMap: Record<string, { bgColor: string; iconColor: string; spotlightCo
 
 const AIUseCases = () => {
   return (
-    <section className="py-20 md:py-24 lg:py-32 bg-section-primary">
+    <section className="py-20 md:py-24 lg:py-32 bg-section-dark">
       <div className="container-width">
         <div className="px-4 md:px-6 lg:px-8">
           {/* Section Header - matching other sections */}

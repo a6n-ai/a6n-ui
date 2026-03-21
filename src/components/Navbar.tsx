@@ -172,8 +172,8 @@ export const Navbar = React.forwardRef<HTMLElement, NavbarProps>(
         className={cn(
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 [&_*]:no-underline",
           scrolled
-            ? "top-3 mx-4 md:mx-6 lg:mx-8 rounded-full border border-border/40 bg-background/80 backdrop-blur-xl shadow-lg"
-            : "bg-transparent",
+            ? "top-3 mx-4 md:mx-6 lg:mx-8 rounded-full border border-white/10 bg-background/80 backdrop-blur-xl shadow-lg"
+            : "bg-transparent text-white",
           className
         )}
         {...props}

@@ -265,6 +265,22 @@
   .bg-section-tertiary {
     background-color: var(--section-bg-tertiary);
   }
+
+  /* Dark section utilities */
+  .bg-section-dark {
+    background-color: var(--section-bg-dark);
+    color: var(--section-dark-foreground);
+  }
+
+  .bg-section-dark-alt {
+    background-color: var(--section-bg-dark-alt);
+    color: var(--section-dark-foreground);
+  }
+
+  .bg-section-dark-gradient {
+    background: linear-gradient(135deg, var(--section-bg-dark) 0%, var(--section-bg-dark-alt) 50%, oklch(0.18 0.04 270) 100%);
+    color: var(--section-dark-foreground);
+  }
 }
 
 /* --- Start OKLCH Theme --- */
@@ -333,6 +349,12 @@
   --section-bg-primary: oklch(0.98 0 0); /* light neutral */
   --section-bg-secondary: oklch(0.95 0.02 260);
   --section-bg-tertiary: oklch(0.92 0.04 280);
+
+  /* Dark section colors */
+  --section-bg-dark: oklch(0.15 0.02 265);
+  --section-bg-dark-alt: oklch(0.18 0.03 260);
+  --section-dark-foreground: oklch(0.95 0 0);
+  --section-dark-muted: oklch(0.7 0.02 260);
 }
 
 .dark {

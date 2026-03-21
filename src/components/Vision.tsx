@@ -30,13 +30,13 @@ const Vision = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-section-primary">
+    <section ref={sectionRef} className="section-padding bg-section-dark-alt">
       <div className="container-width">
         <div className="px-6 md:px-10">
           <div className="space-y-8">
             {/* Title */}
             <h2
-              className={`text-3xl md:text-4xl font-bold text-foreground text-left ${
+              className={`text-3xl md:text-4xl font-bold text-left ${
                 isVisible ? "animate-fade-in opacity-0" : ""
               }`}
             >
@@ -45,7 +45,7 @@ const Vision = () => {
 
             {/* Subtext */}
             <p
-              className={`text-base md:text-lg text-muted-foreground italic leading-relaxed text-left ${
+              className={`text-base md:text-lg text-white/50 italic leading-relaxed text-left ${
                 isVisible ? "animate-fade-in opacity-0 stagger-1" : ""
               }`}
             >
@@ -66,7 +66,7 @@ const Vision = () => {
                     className={`px-6 py-2 text-sm font-medium ${
                       item.status === "current"
                         ? "bg-primary text-primary-foreground border-primary"
-                        : "border-muted-foreground/30 text-muted-foreground"
+                        : "border-white/20 text-white/60"
                     }`}
                   >
                     {item.label}

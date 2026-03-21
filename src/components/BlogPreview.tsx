@@ -36,7 +36,7 @@ const BlogPreview = () => {
   const latestPosts = blogPosts.slice(0, 3);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-section-primary">
+    <section ref={sectionRef} className="section-padding bg-section-dark-gradient">
       <div className="container-width">
         <div className="px-6 md:px-10">
           {/* Header */}
@@ -62,25 +62,25 @@ const BlogPreview = () => {
             {latestPosts.map((post, index) => (
               <Link key={post.slug} to={`/blog/${post.slug}`} className="group">
                 <Card
-                  className={`h-full notion-card hover:border-primary/30 transition-all duration-base ${
+                  className={`h-full notion-card bg-white/5 border-white/10 hover:border-primary/40 transition-all duration-base ${
                     isVisible ? "animate-fade-in-up opacity-0" : ""
                   }`}
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <CardHeader>
                     <div className="flex items-center justify-between mb-2">
-                      <div className="flex items-center text-xs text-muted-foreground">
+                      <div className="flex items-center text-xs text-white/40">
                         <Calendar className="h-3 w-3 mr-1" />
                         {post.date}
                       </div>
                       <ArrowUpRight className="h-4 w-4 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />
                     </div>
-                    <CardTitle className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                    <CardTitle className="text-lg font-semibold text-white group-hover:text-primary transition-colors line-clamp-2">
                       {post.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
-                    <CardDescription className="text-sm text-muted-foreground line-clamp-3 mb-4">
+                    <CardDescription className="text-sm text-white/50 line-clamp-3 mb-4">
                       {post.excerpt}
                     </CardDescription>
                     <div className="flex flex-wrap gap-2">

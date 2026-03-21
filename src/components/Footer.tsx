@@ -14,7 +14,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t border-white/10 bg-section-dark">
       <div className="container-width">
         <div className="px-6 md:px-10 py-16">
           {/* Large a6n branding */}
@@ -25,7 +25,7 @@ const Footer = () => {
                 alt="a6n logo"
                 className="h-16 w-16 transition-all duration-300"
                 style={{
-                  filter: "brightness(0) saturate(100%)",
+                  filter: "brightness(0) saturate(100%) invert(1)",
                 }}
               />
               <style>{`
@@ -33,11 +33,11 @@ const Footer = () => {
                                     filter: brightness(0) saturate(100%) invert(56%) sepia(91%) saturate(3684%) hue-rotate(181deg) brightness(94%) contrast(95%) !important;
                                 }
                             `}</style>
-              <h2 className="text-6xl md:text-7xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+              <h2 className="text-6xl md:text-7xl font-bold text-white group-hover:text-primary transition-colors duration-300">
                 a6n
               </h2>
             </Link>
-            <p className="text-lg text-muted-foreground mt-4">
+            <p className="text-lg text-white/50 mt-4">
               Work smarter with your AI crew.
             </p>
           </div>
@@ -49,7 +49,7 @@ const Footer = () => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+                  className="text-sm text-white/50 hover:text-primary transition-colors duration-300"
                 >
                   {link.label}
                 </Link>
@@ -69,7 +69,7 @@ const Footer = () => {
                     size={24}
                     className="transition-all duration-300"
                     style={{
-                      filter: "brightness(0) saturate(100%)",
+                      filter: "brightness(0) saturate(100%) invert(1)",
                     }}
                   />
                   <style>{`
@@ -83,8 +83,8 @@ const Footer = () => {
           </div>
 
           {/* Copyright */}
-          <div className="pt-8 border-t">
-            <p className="text-sm text-muted-foreground text-center">
+          <div className="pt-8 border-t border-white/10">
+            <p className="text-sm text-white/40 text-center">
               © 2025 a6n. Automation that empowers teams.
             </p>
           </div>

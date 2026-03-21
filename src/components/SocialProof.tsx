@@ -33,7 +33,7 @@ const SocialProof = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="section-padding bg-section-secondary">
+    <section ref={sectionRef} className="section-padding bg-section-primary">
       <div className="container-width">
         <div className="px-6 md:px-10">
           <div className="space-y-8 max-w-3xl">
@@ -61,7 +61,7 @@ const SocialProof = () => {
               {clientLogos.map((logo, index) => (
                 <Card
                   key={logo.name}
-                  className={`h-24 flex items-center justify-center bg-card/50 border-border/50 ${
+                  className={`h-24 flex items-center justify-center bg-muted/50 border-border/50 ${
                     isVisible ? "animate-fade-in opacity-0" : ""
                   }`}
                   style={{ animationDelay: `${index * 0.1}s` }}

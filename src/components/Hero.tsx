@@ -112,10 +112,10 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-section-primary">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-section-dark">
       <div className="relative h-screen w-full overflow-hidden">
         <WavyBackground
-          backgroundFill="white"
+          backgroundFill="oklch(0.15 0.02 265)"
           colors={waveColors}
           waveWidth={50}
           blur={10}
@@ -127,13 +127,13 @@ const Hero = () => {
           <div className="px-6 md:px-10 py-32 md:py-40">
             <div className="max-w-4xl mx-auto text-center space-y-8">
               <div className="flex justify-center animate-fade-in opacity-0 stagger-1">
-                <Announcement className="bg-sky-100 text-sky-700" themed>
+                <Announcement className="bg-sky-500/20 text-sky-300 border border-sky-500/30" themed>
                   <AnnouncementTag>Latest update</AnnouncementTag>
                   <AnnouncementTitle>
                     🎉 We're officially launching! Join the future of AI
                     automation
                     <ArrowUpRightIcon
-                      className="shrink-0 text-muted-foreground"
+                      className="shrink-0 text-sky-400"
                       size={16}
                     />
                   </AnnouncementTitle>
@@ -150,11 +150,11 @@ const Hero = () => {
                 }}
               >
                 <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold mb-6 md:mb-8 tracking-tight text-center">
-                  <span className="bg-clip-text text-transparent bg-gradient-to-b from-gray-900 to-gray-700">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/70">
                     Work smarter with your
                   </span>
                   <br />
-                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-rose-500 to-amber-500">
+                  <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-rose-400 to-amber-400">
                     AI crew
                   </span>
                 </h1>
@@ -170,7 +170,7 @@ const Hero = () => {
                 />
               </h2>
 
-              <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto animate-fade-in opacity-0 stagger-4">
+              <p className="text-base md:text-lg text-white/60 max-w-2xl mx-auto animate-fade-in opacity-0 stagger-4">
                 The AI automation platform where teams and agents achieve more
                 together.
               </p>
