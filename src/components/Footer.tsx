@@ -14,7 +14,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="border-t bg-background">
+    <footer className="border-t border-white/10 bg-section-dark">
       <div className="container-width">
         <div className="px-6 md:px-10 py-16">
           {/* Large a6n branding */}
